@@ -1,217 +1,635 @@
-<!DOCTYPE HTML>
-<!--
-	Landed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Landed by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload landing">
-		<div id="page-wrapper">
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Ali Aloufi | Portfolio</title>
+    <meta name="description" content="Ali Aloufi - Information Systems student and automation enthusiast. Building smart workflows and digital solutions.">
+    <meta name="keywords" content="Ali Aloufi, portfolio, information systems, automation, web development, Saudi Arabia">
+    <meta name="author" content="Ali Aloufi">
+    <meta property="og:title" content="Ali Aloufi | Portfolio">
+    <meta property="og:description" content="Building smart workflows and digital solutions.">
+    <meta property="og:image" content="images/pic01.jpg">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="images/favicon.png">
 
-			<!-- Header -->
-				<header id="header">
-					<h1 id="logo"><a href="index.html">Landed</a></h1>
-					<nav id="nav">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li>
-								<a href="#">Layouts</a>
-								<ul>
-									<li><a href="left-sidebar.html">Left Sidebar</a></li>
-									<li><a href="right-sidebar.html">Right Sidebar</a></li>
-									<li><a href="no-sidebar.html">No Sidebar</a></li>
-									<li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option 1</a></li>
-											<li><a href="#">Option 2</a></li>
-											<li><a href="#">Option 3</a></li>
-											<li><a href="#">Option 4</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li><a href="elements.html">Elements</a></li>
-							<li><a href="#" class="button primary">Sign Up</a></li>
-						</ul>
-					</nav>
-				</header>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts: Inter للانجليزية و Cairo للعربية -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-			<!-- Banner -->
-				<section id="banner">
-					<div class="content">
-						<header>
-							<h2>The future has landed</h2>
-							<p>And there are no hoverboards or flying cars.<br />
-							Just apps. Lots of mother flipping apps.</p>
-						</header>
-						<span class="image"><img src="images/pic01.jpg" alt="" /></span>
-					</div>
-					<a href="#one" class="goto-next scrolly">Next</a>
-				</section>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;      /* أزرق داكن */
+            --secondary-color: #2563eb;    /* أزرق فاتح */
+            --accent-color: #f59e0b;       /* ذهبي */
+            --bg-light: #f8fafc;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-md: 0 5px 20px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
 
-			<!-- One -->
-				<section id="one" class="spotlight style1 bottom">
-					<span class="image fit main"><img src="images/pic02.jpg" alt="" /></span>
-					<div class="content">
-						<div class="container">
-							<div class="row">
-								<div class="col-4 col-12-medium">
-									<header>
-										<h2>Odio faucibus ipsum integer consequat</h2>
-										<p>Nascetur eu nibh vestibulum amet gravida nascetur praesent</p>
-									</header>
-								</div>
-								<div class="col-4 col-12-medium">
-									<p>Feugiat accumsan lorem eu ac lorem amet sed accumsan donec.
-									Blandit orci porttitor semper. Arcu phasellus tortor enim mi
-									nisi praesent dolor adipiscing. Integer mi sed nascetur cep aliquet
-									augue varius tempus lobortis porttitor accumsan consequat
-									adipiscing lorem dolor.</p>
-								</div>
-								<div class="col-4 col-12-medium">
-									<p>Morbi enim nascetur et placerat lorem sed iaculis neque ante
-									adipiscing adipiscing metus massa. Blandit orci porttitor semper.
-									Arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer
-									mi sed nascetur cep aliquet augue varius tempus. Feugiat lorem
-									ipsum dolor nullam.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<a href="#two" class="goto-next scrolly">Next</a>
-				</section>
+        body {
+            font-family: 'Inter', 'Cairo', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
 
-			<!-- Two -->
-				<section id="two" class="spotlight style2 right">
-					<span class="image fit main"><img src="images/pic03.jpg" alt="" /></span>
-					<div class="content">
-						<header>
-							<h2>Interdum amet non magna accumsan</h2>
-							<p>Nunc commodo accumsan eget id nisi eu col volutpat magna</p>
-						</header>
-						<p>Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer mi sed nascetur cep aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
-						<ul class="actions">
-							<li><a href="#" class="button">Learn More</a></li>
-						</ul>
-					</div>
-					<a href="#three" class="goto-next scrolly">Next</a>
-				</section>
+        /* عندما تكون اللغة عربية نستخدم Cairo */
+        [dir="rtl"] body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+        }
 
-			<!-- Three -->
-				<section id="three" class="spotlight style3 left">
-					<span class="image fit main bottom"><img src="images/pic04.jpg" alt="" /></span>
-					<div class="content">
-						<header>
-							<h2>Interdum felis blandit praesent sed augue</h2>
-							<p>Accumsan integer ultricies aliquam vel massa sapien phasellus</p>
-						</header>
-						<p>Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer mi sed nascetur cep aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
-						<ul class="actions">
-							<li><a href="#" class="button">Learn More</a></li>
-						</ul>
-					</div>
-					<a href="#four" class="goto-next scrolly">Next</a>
-				</section>
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
 
-			<!-- Four -->
-				<section id="four" class="wrapper style1 special fade-up">
-					<div class="container">
-						<header class="major">
-							<h2>Accumsan sed tempus adipiscing blandit</h2>
-							<p>Iaculis ac volutpat vis non enim gravida nisi faucibus posuere arcu consequat</p>
-						</header>
-						<div class="box alt">
-							<div class="row gtr-uniform">
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-chart-area"></span>
-									<h3>Ipsum sed commodo</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-comment"></span>
-									<h3>Eleifend lorem ornare</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-flask"></span>
-									<h3>Cubilia cep lobortis</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-paper-plane"></span>
-									<h3>Non semper interdum</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-file"></span>
-									<h3>Odio laoreet accumsan</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-lock"></span>
-									<h3>Massa arcu accumsan</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-							</div>
-						</div>
-						<footer class="major">
-							<ul class="actions special">
-								<li><a href="#" class="button">Magna sed feugiat</a></li>
-							</ul>
-						</footer>
-					</div>
-				</section>
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
 
-			<!-- Five -->
-				<section id="five" class="wrapper style2 special fade">
-					<div class="container">
-						<header>
-							<h2>Magna faucibus lorem diam</h2>
-							<p>Ante metus praesent faucibus ante integer id accumsan eleifend</p>
-						</header>
-						<form method="post" action="#" class="cta">
-							<div class="row gtr-uniform gtr-50">
-								<div class="col-8 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Your Email Address" /></div>
-								<div class="col-4 col-12-xsmall"><input type="submit" value="Get Started" class="fit primary" /></div>
-							</div>
-						</form>
-					</div>
-				</section>
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: white;
+        }
 
-			<!-- Footer -->
-				<footer id="footer">
-					<ul class="icons">
-						<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-						<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-						<li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</footer>
+        .btn-outline-light {
+            border-radius: 30px;
+            font-weight: 600;
+        }
 
-		</div>
+        .section-padding {
+            padding: 80px 0;
+        }
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
 
-	</body>
+        .bg-light-section {
+            background-color: var(--bg-light);
+        }
+
+        /* ========== Header / Navbar ========== */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            padding: 0.75rem 0;
+        }
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        .navbar-nav .nav-link {
+            font-weight: 600;
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            transition: var(--transition);
+        }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--primary-color);
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        .lang-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* ========== Hero / Banner ========== */
+        .hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+            overflow: hidden;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+        .hero p.lead {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+        }
+        .hero-img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            border: 6px solid white;
+            box-shadow: var(--shadow-md);
+            object-fit: cover;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* ========== About Section ========== */
+        .about-img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ========== Skills ========== */
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+        .progress {
+            height: 10px;
+            border-radius: 20px;
+            background-color: #e2e8f0;
+        }
+        .progress-bar {
+            background-color: var(--secondary-color);
+            border-radius: 20px;
+            transition: width 1s ease;
+        }
+
+        /* ========== Portfolio Cards ========== */
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            height: 100%;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+        .project-thumb {
+            height: 200px;
+            overflow: hidden;
+        }
+        .project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .project-card:hover .project-thumb img {
+            transform: scale(1.05);
+        }
+        .project-body {
+            padding: 1.5rem;
+        }
+        .project-body h5 {
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .tech-tag {
+            display: inline-block;
+            background: #eef2ff;
+            color: var(--primary-color);
+            padding: 0.2rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.15rem;
+        }
+        .project-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        /* ========== Contact Form ========== */
+        .contact-form .form-control {
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+            padding: 0.75rem 1rem;
+        }
+        .contact-form .form-control:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+        }
+
+        /* ========== Footer ========== */
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 2rem 0;
+        }
+        footer a {
+            color: #ffffff;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+        }
+        footer a:hover {
+            color: var(--accent-color);
+        }
+
+        /* ========== RTL Adjustments ========== */
+        [dir="rtl"] .hero-buttons {
+            flex-direction: row-reverse;
+        }
+        [dir="rtl"] .project-links {
+            flex-direction: row-reverse;
+        }
+        [dir="rtl"] .navbar-nav {
+            text-align: right;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0 60px;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero-img {
+                width: 200px;
+                height: 200px;
+                margin-top: 2rem;
+            }
+            .section-padding {
+                padding: 60px 0;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===================== Header ===================== -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#" data-en="Ali Aloufi" data-ar="علي العوفي">Ali Aloufi</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link active" href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about" data-en="About" data-ar="عني">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills" data-en="Skills" data-ar="المهارات">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio" data-en="Portfolio" data-ar="أعمالي">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact" data-en="Contact" data-ar="تواصل معي">Contact</a></li>
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                        <button id="langToggle" class="lang-btn" aria-label="Toggle language">العربية</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===================== Hero Section ===================== -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 data-en="Ali Aloufi" data-ar="علي العوفي">Ali Aloufi</h1>
+                    <p class="lead" data-en="Information Systems Student & Automation Enthusiast"
+                       data-ar="طالب نظم معلومات ومهتم بأتمتة العمليات الرقمية">
+                        Information Systems Student & Automation Enthusiast
+                    </p>
+                    <p class="text-muted" data-en="Building smart workflows and digital solutions that save time and increase productivity."
+                       data-ar="أبني مسارات عمل ذكية وحلولاً رقمية توفر الوقت وتزيد الإنتاجية.">
+                        Building smart workflows and digital solutions that save time and increase productivity.
+                    </p>
+                    <div class="hero-buttons mt-4">
+                        <a href="#portfolio" class="btn btn-primary" data-en="View My Work" data-ar="شاهد أعمالي">View My Work</a>
+                        <a href="assets/cv.pdf" download class="btn btn-outline-primary" data-en="Download CV" data-ar="تحميل السيرة الذاتية">Download CV</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="images/pic01.jpg" alt="Ali Aloufi" class="hero-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== About Section ===================== -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-en="About Me" data-ar="نبذة عني">About Me</h2>
+            </div>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5 text-center">
+                    <img src="images/pic02.jpg" alt="About Ali" class="about-img">
+                </div>
+                <div class="col-lg-7">
+                    <h3 data-en="Welcome to my digital space" data-ar="أهلاً بك في مساحتي الرقمية">Welcome to my digital space</h3>
+                    <p data-en="I am an Information Systems student at King Faisal University, passionate about bridging business and technology through process automation and modern web solutions."
+                       data-ar="أنا طالب نظم معلومات في جامعة الملك فيصل، شغوف بربط الأعمال بالتكنولوجيا من خلال أتمتة العمليات والحلول التقنية الحديثة.">
+                        I am an Information Systems student at King Faisal University, passionate about bridging business and technology through process automation and modern web solutions.
+                    </p>
+                    <p data-en="My goal is to eliminate repetitive tasks using no-code/low-code tools and build clean, efficient systems that save time and boost productivity."
+                       data-ar="هدفي هو التخلص من المهام المتكررة باستخدام أدوات الأتمتة وبناء أنظمة نظيفة وفعالة توفر الوقت وتزيد الإنتاجية.">
+                        My goal is to eliminate repetitive tasks using no-code/low-code tools and build clean, efficient systems that save time and boost productivity.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <div><i class="bi bi-mortarboard-fill text-primary me-2"></i><span data-en="King Faisal University" data-ar="جامعة الملك فيصل">King Faisal University</span></div>
+                        <div><i class="bi bi-geo-alt-fill text-primary me-2"></i><span data-en="Saudi Arabia" data-ar="المملكة العربية السعودية">Saudi Arabia</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== Skills Section ===================== -->
+    <section id="skills" class="section-padding bg-light-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-en="Skills" data-ar="المهارات">Skills</h2>
+                <p class="text-muted" data-en="Technologies and tools I work with" data-ar="التقنيات والأدوات التي أعمل بها">Technologies and tools I work with</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="skill-item">
+                        <div class="skill-header"><span>HTML / CSS</span><span>90%</span></div>
+                        <div class="progress"><div class="progress-bar" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>JavaScript</span><span>75%</span></div>
+                        <div class="progress"><div class="progress-bar" style="width: 75%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Python</span><span>70%</span></div>
+                        <div class="progress"><div class="progress-bar" style="width: 70%;"></div></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Zapier / Make</span><span>85%</span></div>
+                        <div class="progress"><div class="progress-bar" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Airtable / SQL</span><span>80%</span></div>
+                        <div class="progress"><div class="progress-bar" style="width: 80%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Git / GitHub</span><span>75%</span></div>
+                        <div class="progress"><div class="progress-bar" style="width: 75%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== Portfolio Section ===================== -->
+    <section id="portfolio" class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-en="Featured Projects" data-ar="المشاريع المميزة">Featured Projects</h2>
+                <p class="text-muted" data-en="A showcase of my automation and systems projects" data-ar="عرض لأبرز مشاريعي في الأتمتة وتطوير الأنظمة">A showcase of my automation and systems projects</p>
+            </div>
+            <div class="row g-4">
+                <!-- مشروع 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <img src="images/pic03.jpg" alt="Order Tracking System">
+                        </div>
+                        <div class="project-body">
+                            <h5 data-en="Order Tracking System" data-ar="نظام تتبع الطلبات">Order Tracking System</h5>
+                            <p class="text-muted" data-en="Automated order tracking using Airtable and Make, with real-time notifications."
+                               data-ar="أتمتة تتبع الطلبات باستخدام Airtable و Make مع إشعارات فورية.">
+                                Automated order tracking using Airtable and Make, with real-time notifications.
+                            </p>
+                            <div>
+                                <span class="tech-tag">Airtable</span>
+                                <span class="tech-tag">Make</span>
+                                <span class="tech-tag">Zapier</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-sm btn-outline-primary">GitHub</a>
+                                <a href="#" class="btn btn-sm btn-primary">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- مشروع 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <img src="images/pic04.jpg" alt="University Portal">
+                        </div>
+                        <div class="project-body">
+                            <h5 data-en="University Portal" data-ar="بوابة الجامعة">University Portal</h5>
+                            <p class="text-muted" data-en="Responsive web portal for students to access schedules and grades."
+                               data-ar="بوابة ويب متجاوبة للطلاب للوصول إلى الجداول والدرجات.">
+                                Responsive web portal for students to access schedules and grades.
+                            </p>
+                            <div>
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-sm btn-outline-primary">GitHub</a>
+                                <a href="#" class="btn btn-sm btn-primary">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- مشروع 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <img src="images/pic01.jpg" alt="Inventory Management">
+                        </div>
+                        <div class="project-body">
+                            <h5 data-en="Inventory Management" data-ar="إدارة المخزون">Inventory Management</h5>
+                            <p class="text-muted" data-en="Database-driven inventory system with barcode scanning and reporting."
+                               data-ar="نظام مخزون قائم على قاعدة البيانات مع مسح الباركود والتقارير.">
+                                Database-driven inventory system with barcode scanning and reporting.
+                            </p>
+                            <div>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Flask</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-sm btn-outline-primary">GitHub</a>
+                                <a href="#" class="btn btn-sm btn-primary">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== Contact Section ===================== -->
+    <section id="contact" class="section-padding bg-light-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-en="Get In Touch" data-ar="تواصل معي">Get In Touch</h2>
+                <p class="text-muted" data-en="Have a project in mind or just want to say hello?" data-ar="هل لديك مشروع أو تريد فقط إلقاء التحية؟">Have a project in mind or just want to say hello?</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form class="contact-form" action="#" method="post">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="name" placeholder="Your Name" data-en-placeholder="Your Name" data-ar-placeholder="الاسم" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" name="email" placeholder="Your Email" data-en-placeholder="Your Email" data-ar-placeholder="البريد الإلكتروني" required>
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" name="message" rows="5" placeholder="Your Message" data-en-placeholder="Your Message" data-ar-placeholder="رسالتك" required></textarea>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-primary px-5" data-en="Send Message" data-ar="إرسال الرسالة">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-4 mt-4 mt-lg-0">
+                    <div class="bg-white p-4 rounded shadow-sm">
+                        <h5 data-en="Contact Information" data-ar="معلومات التواصل">Contact Information</h5>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><i class="bi bi-envelope-fill me-2 text-primary"></i> <a href="mailto:your.email@example.com">your.email@example.com</a></li>
+                            <li class="mb-2"><i class="bi bi-telephone-fill me-2 text-primary"></i> <a href="tel:+966500000000">+966 50 000 0000</a></li>
+                            <li class="mb-2"><i class="bi bi-geo-alt-fill me-2 text-primary"></i> <span data-en="Saudi Arabia" data-ar="المملكة العربية السعودية">Saudi Arabia</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== Footer ===================== -->
+    <footer class="text-center">
+        <div class="container">
+            <div class="mb-3">
+                <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="https://github.com/yourusername" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                <a href="mailto:your.email@example.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div>
+            <p class="mb-0 small">&copy; <span data-en="Ali Aloufi. All rights reserved." data-ar="علي العوفي. جميع الحقوق محفوظة.">Ali Aloufi. All rights reserved.</span></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Language Switcher Script -->
+    <script>
+        (function() {
+            let currentLang = localStorage.getItem('lang') || 'en';
+
+            function applyLanguage(lang, updateStorage = true) {
+                const htmlTag = document.getElementById('html-root');
+                const langBtn = document.getElementById('langToggle');
+                const titleTag = document.getElementById('page-title');
+
+                if (lang === 'ar') {
+                    htmlTag.setAttribute('dir', 'rtl');
+                    htmlTag.setAttribute('lang', 'ar');
+                    langBtn.textContent = 'English';
+                    titleTag.textContent = 'علي العوفي | معرض الأعمال';
+                } else {
+                    htmlTag.setAttribute('dir', 'ltr');
+                    htmlTag.setAttribute('lang', 'en');
+                    langBtn.textContent = 'العربية';
+                    titleTag.textContent = 'Ali Aloufi | Portfolio';
+                }
+
+                // تحديث النصوص
+                document.querySelectorAll('[data-en]').forEach(element => {
+                    const text = element.getAttribute(`data-${lang}`);
+                    if (text) {
+                        element.textContent = text;
+                    }
+                });
+
+                // تحديث placeholders
+                document.querySelectorAll('[data-en-placeholder]').forEach(element => {
+                    const placeholder = element.getAttribute(`data-${lang}-placeholder`);
+                    if (placeholder) {
+                        element.placeholder = placeholder;
+                    }
+                });
+
+                if (updateStorage) {
+                    localStorage.setItem('lang', lang);
+                }
+                currentLang = lang;
+            }
+
+            // تطبيق اللغة المحفوظة عند التحميل
+            applyLanguage(currentLang, false);
+
+            // ربط زر التبديل
+            document.getElementById('langToggle').addEventListener('click', function() {
+                const newLang = currentLang === 'en' ? 'ar' : 'en';
+                applyLanguage(newLang);
+            });
+        })();
+    </script>
+</body>
 </html>
