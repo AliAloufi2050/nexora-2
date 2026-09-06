@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" id="html-root">
+<html lang="en" dir="ltr" id="html-root" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,12 +21,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <!-- Typed.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
     <style>
         :root {
-            --primary-color: #1e3a8a;      /* أزرق داكن */
-            --secondary-color: #2563eb;    /* أزرق فاتح */
-            --accent-color: #f59e0b;       /* ذهبي */
+            --primary-color: #1e3a8a;
+            --secondary-color: #2563eb;
+            --accent-color: #f59e0b;
             --bg-light: #f8fafc;
             --text-dark: #0f172a;
             --text-muted: #475569;
@@ -36,15 +40,27 @@
             --transition: all 0.3s ease;
         }
 
+        [data-theme="dark"] {
+            --bg-light: #1e293b;
+            --text-dark: #f1f5f9;
+            --text-muted: #cbd5e1;
+            --white: #0f172a;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
+            --shadow-md: 0 5px 20px rgba(0,0,0,0.3);
+            --primary-color: #3b82f6;
+            --secondary-color: #60a5fa;
+            --accent-color: #fbbf24;
+        }
+
         body {
             font-family: 'Inter', 'Cairo', sans-serif;
             color: var(--text-dark);
             background-color: var(--white);
             line-height: 1.7;
             scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* عندما تكون اللغة عربية نستخدم Cairo */
         [dir="rtl"] body {
             font-family: 'Cairo', 'Inter', sans-serif;
         }
@@ -78,9 +94,15 @@
             color: white;
         }
 
-        .btn-outline-light {
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
             border-radius: 30px;
             font-weight: 600;
+        }
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
         }
 
         .section-padding {
@@ -108,6 +130,7 @@
 
         .bg-light-section {
             background-color: var(--bg-light);
+            transition: background-color 0.3s ease;
         }
 
         /* ========== Header / Navbar ========== */
@@ -118,10 +141,13 @@
             transition: var(--transition);
             padding: 0.75rem 0;
         }
+        [data-theme="dark"] .navbar {
+            background: rgba(15, 23, 42, 0.95);
+        }
         .navbar-brand {
             font-weight: 800;
             font-size: 1.5rem;
-            color: var(--primary-color);
+            color: var(--primary-color) !important;
         }
         .navbar-nav .nav-link {
             font-weight: 600;
@@ -136,7 +162,7 @@
             background: rgba(37, 99, 235, 0.1);
         }
 
-        .lang-btn {
+        .lang-btn, .theme-btn {
             background: transparent;
             border: 1px solid var(--primary-color);
             color: var(--primary-color);
@@ -147,16 +173,59 @@
             transition: var(--transition);
             font-size: 0.9rem;
         }
-        .lang-btn:hover {
+        .lang-btn:hover, .theme-btn:hover {
             background: var(--primary-color);
             color: white;
+        }
+
+        /* ========== Scroll Progress Bar ========== */
+        #scrollProgress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--accent-color);
+            z-index: 9999;
+            transition: width 0.2s;
+        }
+
+        /* ========== Back to Top ========== */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        [dir="rtl"] #backToTop {
+            right: auto;
+            left: 30px;
+        }
+        #backToTop:hover {
+            background: var(--secondary-color);
         }
 
         /* ========== Hero / Banner ========== */
         .hero {
             padding: 120px 0 80px;
             background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+            transition: background 0.3s ease;
             overflow: hidden;
+        }
+        [data-theme="dark"] .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
         .hero h1 {
             font-size: 3rem;
@@ -212,7 +281,7 @@
 
         /* ========== Portfolio Cards ========== */
         .project-card {
-            background: white;
+            background: var(--white);
             border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--shadow-sm);
@@ -259,6 +328,115 @@
             gap: 0.75rem;
         }
 
+        /* ========== Timeline (Experience) ========== */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent-color);
+        }
+        [dir="rtl"] .timeline::before {
+            left: auto;
+            right: 20px;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 30px;
+        }
+        [dir="rtl"] .timeline-item {
+            padding-left: 0;
+            padding-right: 50px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 3px solid var(--accent-color);
+        }
+        [dir="rtl"] .timeline-item::before {
+            left: auto;
+            right: 12px;
+        }
+        .timeline-date {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* ========== Certifications ========== */
+        .cert-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            height: 100%;
+            transition: var(--transition);
+        }
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        .cert-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        /* ========== Testimonials ========== */
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-muted);
+        }
+        .testimonial-author {
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+
+        /* ========== Blog Cards ========== */
+        .blog-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            height: 100%;
+        }
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+        .blog-thumb {
+            height: 180px;
+            overflow: hidden;
+        }
+        .blog-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .blog-body {
+            padding: 1.5rem;
+        }
+
         /* ========== Contact Form ========== */
         .contact-form .form-control {
             border-radius: 10px;
@@ -285,6 +463,21 @@
             color: var(--accent-color);
         }
 
+        /* ========== Scrollbar ========== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+
         /* ========== RTL Adjustments ========== */
         [dir="rtl"] .hero-buttons {
             flex-direction: row-reverse;
@@ -294,6 +487,14 @@
         }
         [dir="rtl"] .navbar-nav {
             text-align: right;
+        }
+        [dir="rtl"] .ms-auto {
+            margin-right: auto !important;
+            margin-left: 0 !important;
+        }
+        [dir="rtl"] .me-2 {
+            margin-left: 0.5rem !important;
+            margin-right: 0 !important;
         }
 
         /* Responsive */
@@ -321,6 +522,12 @@
 </head>
 <body>
 
+    <!-- شريط تقدم التمرير -->
+    <div id="scrollProgress"></div>
+
+    <!-- زر العودة للأعلى -->
+    <button id="backToTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
     <!-- ===================== Header ===================== -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
@@ -334,8 +541,14 @@
                     <li class="nav-item"><a class="nav-link" href="#about" data-en="About" data-ar="عني">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#skills" data-en="Skills" data-ar="المهارات">Skills</a></li>
                     <li class="nav-item"><a class="nav-link" href="#portfolio" data-en="Portfolio" data-ar="أعمالي">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience" data-en="Experience" data-ar="الخبرات">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certifications" data-en="Certifications" data-ar="الشهادات">Certifications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials" data-en="Testimonials" data-ar="التوصيات">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blog" data-en="Blog" data-ar="المدونة">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact" data-en="Contact" data-ar="تواصل معي">Contact</a></li>
-                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0 d-flex gap-2">
+                        <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode"><i class="bi bi-moon-stars"></i></button>
                         <button id="langToggle" class="lang-btn" aria-label="Toggle language">العربية</button>
                     </li>
                 </ul>
@@ -349,9 +562,11 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <h1 data-en="Ali Aloufi" data-ar="علي العوفي">Ali Aloufi</h1>
-                    <p class="lead" data-en="Information Systems Student & Automation Enthusiast"
-                       data-ar="طالب نظم معلومات ومهتم بأتمتة العمليات الرقمية">
-                        Information Systems Student & Automation Enthusiast
+                    <p class="lead">
+                        <span id="typed-text" data-en="Information Systems Student & Automation Enthusiast"
+                              data-ar="طالب نظم معلومات ومهتم بأتمتة العمليات الرقمية">
+                            Information Systems Student & Automation Enthusiast
+                        </span>
                     </p>
                     <p class="text-muted" data-en="Building smart workflows and digital solutions that save time and increase productivity."
                        data-ar="أبني مسارات عمل ذكية وحلولاً رقمية توفر الوقت وتزيد الإنتاجية.">
@@ -363,23 +578,23 @@
                     </div>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <img src="images/pic01.jpg" alt="Ali Aloufi" class="hero-img">
+                    <img src="images/pic01.jpg" alt="Ali Aloufi" class="hero-img" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ===================== About Section ===================== -->
-    <section id="about" class="section-padding">
+    <section id="about" class="section-padding" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="section-title" data-en="About Me" data-ar="نبذة عني">About Me</h2>
             </div>
             <div class="row align-items-center g-5">
-                <div class="col-lg-5 text-center">
-                    <img src="images/pic02.jpg" alt="About Ali" class="about-img">
+                <div class="col-lg-5 text-center" data-aos="fade-right">
+                    <img src="images/pic02.jpg" alt="About Ali" class="about-img" loading="lazy">
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-7" data-aos="fade-left">
                     <h3 data-en="Welcome to my digital space" data-ar="أهلاً بك في مساحتي الرقمية">Welcome to my digital space</h3>
                     <p data-en="I am an Information Systems student at King Faisal University, passionate about bridging business and technology through process automation and modern web solutions."
                        data-ar="أنا طالب نظم معلومات في جامعة الملك فيصل، شغوف بربط الأعمال بالتكنولوجيا من خلال أتمتة العمليات والحلول التقنية الحديثة.">
@@ -399,14 +614,14 @@
     </section>
 
     <!-- ===================== Skills Section ===================== -->
-    <section id="skills" class="section-padding bg-light-section">
+    <section id="skills" class="section-padding bg-light-section" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="section-title" data-en="Skills" data-ar="المهارات">Skills</h2>
                 <p class="text-muted" data-en="Technologies and tools I work with" data-ar="التقنيات والأدوات التي أعمل بها">Technologies and tools I work with</p>
             </div>
             <div class="row g-4">
-                <div class="col-md-6">
+                <div class="col-md-6" data-aos="fade-right">
                     <div class="skill-item">
                         <div class="skill-header"><span>HTML / CSS</span><span>90%</span></div>
                         <div class="progress"><div class="progress-bar" style="width: 90%;"></div></div>
@@ -420,7 +635,7 @@
                         <div class="progress"><div class="progress-bar" style="width: 70%;"></div></div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" data-aos="fade-left">
                     <div class="skill-item">
                         <div class="skill-header"><span>Zapier / Make</span><span>85%</span></div>
                         <div class="progress"><div class="progress-bar" style="width: 85%;"></div></div>
@@ -439,7 +654,7 @@
     </section>
 
     <!-- ===================== Portfolio Section ===================== -->
-    <section id="portfolio" class="section-padding">
+    <section id="portfolio" class="section-padding" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="section-title" data-en="Featured Projects" data-ar="المشاريع المميزة">Featured Projects</h2>
@@ -447,10 +662,10 @@
             </div>
             <div class="row g-4">
                 <!-- مشروع 1 -->
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-card">
                         <div class="project-thumb">
-                            <img src="images/pic03.jpg" alt="Order Tracking System">
+                            <img src="images/pic03.jpg" alt="Order Tracking System" loading="lazy">
                         </div>
                         <div class="project-body">
                             <h5 data-en="Order Tracking System" data-ar="نظام تتبع الطلبات">Order Tracking System</h5>
@@ -471,10 +686,10 @@
                     </div>
                 </div>
                 <!-- مشروع 2 -->
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-card">
                         <div class="project-thumb">
-                            <img src="images/pic04.jpg" alt="University Portal">
+                            <img src="images/pic04.jpg" alt="University Portal" loading="lazy">
                         </div>
                         <div class="project-body">
                             <h5 data-en="University Portal" data-ar="بوابة الجامعة">University Portal</h5>
@@ -495,10 +710,10 @@
                     </div>
                 </div>
                 <!-- مشروع 3 -->
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="project-card">
                         <div class="project-thumb">
-                            <img src="images/pic01.jpg" alt="Inventory Management">
+                            <img src="images/pic01.jpg" alt="Inventory Management" loading="lazy">
                         </div>
                         <div class="project-body">
                             <h5 data-en="Inventory Management" data-ar="إدارة المخزون">Inventory Management</h5>
@@ -522,8 +737,245 @@
         </div>
     </section>
 
+    <!-- ===================== Experience Section ===================== -->
+    <section id="experience" class="section-padding bg-light-section" data-aos="fade-up">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-en="Experience" data-ar="الخبرات">Experience</h2>
+                <p class="text-muted" data-en="My professional and educational journey" data-ar="مسيرتي المهنية والتعليمية">My professional and educational journey</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="timeline">
+                        <div class="timeline-item" data-aos="fade-up">
+                            <h5 class="timeline-date">2024 - الآن</h5>
+                            <h6 data-en="Freelance Automation Specialist" data-ar="أخصائي أتمتة مستقل">Freelance Automation Specialist</h6>
+                            <p class="text-muted" data-en="Designing and implementing automated workflows for small businesses using no-code tools."
+                               data-ar="تصميم وتنفيذ مسارات عمل مؤتمتة للشركات الصغيرة باستخدام أدوات بدون كود.">
+                                Designing and implementing automated workflows for small businesses using no-code tools.
+                            </p>
+                        </div>
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                            <h5 class="timeline-date">2022 - 2024</h5>
+                            <h6 data-en="Information Systems Student" data-ar="طالب نظم معلومات">Information Systems Student</h6>
+                            <p class="text-muted" data-en="King Faisal University - Majoring in Information Systems, focusing on business process automation and database management."
+                               data-ar="جامعة الملك فيصل - تخصص نظم معلومات، مع التركيز على أتمتة العمليات وإدارة قواعد البيانات.">
+                                King Faisal University - Majoring in Information Systems, focusing on business process automation and database management.
+                            </p>
+                        </div>
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                            <h5 class="timeline-date">2021 - 2022</h5>
+                            <h6 data-en="Web Development Trainee" data-ar="متدرب تطوير ويب">Web Development Trainee</h6>
+                            <p class="text-muted" data-en="Completed an intensive training program covering HTML, CSS, JavaScript, and responsive design."
+                               data-ar="أكملت برنامج تدريبي مكثف في HTML و CSS و JavaScript والتصميم المتجاوب.">
+                                Completed an intensive training program covering HTML, CSS, JavaScript, and responsive design.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== Certifications Section ===================== -->
+    <section id="certifications" class="section-padding" data-aos="fade-up">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-en="Certifications" data-ar="الشهادات">Certifications</h2>
+                <p class="text-muted" data-en="Courses and certificates I have earned" data-ar="الدورات والشهادات التي حصلت عليها">Courses and certificates I have earned</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
+                    <div class="cert-card text-center">
+                        <i class="bi bi-award-fill"></i>
+                        <h5 data-en="Automation with Zapier" data-ar="الأتمتة باستخدام Zapier">Automation with Zapier</h5>
+                        <p class="text-muted" data-en="Udemy - 2024" data-ar="يوديمي - 2024">Udemy - 2024</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+                    <div class="cert-card text-center">
+                        <i class="bi bi-award-fill"></i>
+                        <h5 data-en="Responsive Web Design" data-ar="تصميم الويب المتجاوب">Responsive Web Design</h5>
+                        <p class="text-muted" data-en="freeCodeCamp - 2023" data-ar="freeCodeCamp - 2023">freeCodeCamp - 2023</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="300">
+                    <div class="cert-card text-center">
+                        <i class="bi bi-award-fill"></i>
+                        <h5 data-en="Database Fundamentals" data-ar="أساسيات قواعد البيانات">Database Fundamentals</h5>
+                        <p class="text-muted" data-en="Coursera - 2023" data-ar="كورسيرا - 2023">Coursera - 2023</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== Testimonials Section ===================== -->
+    <section id="testimonials" class="section-padding bg-light-section" data-aos="fade-up">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-en="Testimonials" data-ar="التوصيات">Testimonials</h2>
+                <p class="text-muted" data-en="What people say about working with me" data-ar="ماذا يقول الناس عن العمل معي">What people say about working with me</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="testimonial-card">
+                                    <p class="testimonial-text" data-en="“Ali is an exceptional automation specialist. He helped us streamline our order processing and save countless hours.”"
+                                       data-ar="“علي متخصص أتمتة استثنائي. ساعدنا في تبسيط معالجة الطلبات وتوفير ساعات لا تحصى.”">
+                                        “Ali is an exceptional automation specialist. He helped us streamline our order processing and save countless hours.”
+                                    </p>
+                                    <p class="testimonial-author" data-en="- Mohammed Al-Sayed, CEO of TechStart" data-ar="- محمد السيد، الرئيس التنفيذي لشركة TechStart">- Mohammed Al-Sayed, CEO of TechStart</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="testimonial-card">
+                                    <p class="testimonial-text" data-en="“Working with Ali was a pleasure. His web development skills are top-notch and he delivered on time.”"
+                                       data-ar="“العمل مع علي كان ممتعاً. مهاراته في تطوير الويب ممتازة وقد سلم في الوقت المحدد.”">
+                                        “Working with Ali was a pleasure. His web development skills are top-notch and he delivered on time.”
+                                    </p>
+                                    <p class="testimonial-author" data-en="- Sarah Johnson, Project Manager" data-ar="- سارة جونسون، مديرة مشروع">- Sarah Johnson, Project Manager</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="testimonial-card">
+                                    <p class="testimonial-text" data-en="“Ali’s database management system transformed our inventory tracking. Highly recommended!”"
+                                       data-ar="“نظام إدارة قواعد البيانات الخاص بعلي غيّر تتبع مخزوننا. أنصح به بشدة!”">
+                                        “Ali’s database management system transformed our inventory tracking. Highly recommended!”
+                                    </p>
+                                    <p class="testimonial-author" data-en="- Ahmed Al-Qahtani, Operations Manager" data-ar="- أحمد القحطاني، مدير العمليات">- Ahmed Al-Qahtani, Operations Manager</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== Blog / Articles Section ===================== -->
+    <section id="blog" class="section-padding" data-aos="fade-up">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-en="Latest Articles" data-ar="أحدث المقالات">Latest Articles</h2>
+                <p class="text-muted" data-en="Thoughts and insights on technology and automation" data-ar="أفكار ورؤى حول التكنولوجيا والأتمتة">Thoughts and insights on technology and automation</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="blog-card">
+                        <div class="blog-thumb">
+                            <img src="images/pic03.jpg" alt="Article 1" loading="lazy">
+                        </div>
+                        <div class="blog-body">
+                            <h5 data-en="Getting Started with Process Automation" data-ar="البدء في أتمتة العمليات">Getting Started with Process Automation</h5>
+                            <p class="text-muted" data-en="A beginner's guide to automating repetitive tasks using no-code tools like Zapier and Make."
+                               data-ar="دليل المبتدئين لأتمتة المهام المتكررة باستخدام أدوات بدون كود مثل Zapier و Make.">
+                                A beginner's guide to automating repetitive tasks using no-code tools like Zapier and Make.
+                            </p>
+                            <a href="#" class="btn btn-sm btn-outline-primary" data-en="Read More" data-ar="اقرأ المزيد">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-card">
+                        <div class="blog-thumb">
+                            <img src="images/pic04.jpg" alt="Article 2" loading="lazy">
+                        </div>
+                        <div class="blog-body">
+                            <h5 data-en="Building Responsive Web Portals" data-ar="بناء بوابات ويب متجاوبة">Building Responsive Web Portals</h5>
+                            <p class="text-muted" data-en="Learn how to create modern web interfaces that work on any device using Bootstrap."
+                               data-ar="تعلم كيفية إنشاء واجهات ويب حديثة تعمل على أي جهاز باستخدام Bootstrap.">
+                                Learn how to create modern web interfaces that work on any device using Bootstrap.
+                            </p>
+                            <a href="#" class="btn btn-sm btn-outline-primary" data-en="Read More" data-ar="اقرأ المزيد">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="blog-card">
+                        <div class="blog-thumb">
+                            <img src="images/pic01.jpg" alt="Article 3" loading="lazy">
+                        </div>
+                        <div class="blog-body">
+                            <h5 data-en="Database Design Best Practices" data-ar="أفضل ممارسات تصميم قواعد البيانات">Database Design Best Practices</h5>
+                            <p class="text-muted" data-en="Tips for structuring efficient and scalable databases for your projects."
+                               data-ar="نصائح لهيكلة قواعد بيانات فعالة وقابلة للتوسع لمشاريعك.">
+                                Tips for structuring efficient and scalable databases for your projects.
+                            </p>
+                            <a href="#" class="btn btn-sm btn-outline-primary" data-en="Read More" data-ar="اقرأ المزيد">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FAQ Section ===================== -->
+    <section id="faq" class="section-padding bg-light-section" data-aos="fade-up">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-en="Frequently Asked Questions" data-ar="الأسئلة الشائعة">Frequently Asked Questions</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1" aria-expanded="true" aria-controls="q1">
+                                    <span data-en="What services do you offer?" data-ar="ما الخدمات التي تقدمها؟">What services do you offer?</span>
+                                </button>
+                            </h2>
+                            <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" data-en="I offer process automation, web development, and database management services."
+                                     data-ar="أقدم خدمات أتمتة العمليات، تطوير الويب، وإدارة قواعد البيانات.">
+                                    I offer process automation, web development, and database management services.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2" aria-expanded="false" aria-controls="q2">
+                                    <span data-en="Are you available for freelance work?" data-ar="هل أنت متاح للعمل الحر؟">Are you available for freelance work?</span>
+                                </button>
+                            </h2>
+                            <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" data-en="Yes, I am open to freelance projects and collaborations. Feel free to contact me."
+                                     data-ar="نعم، أنا منفتح للمشاريع المستقلة والتعاون. لا تتردد في التواصل معي.">
+                                    Yes, I am open to freelance projects and collaborations. Feel free to contact me.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3" aria-expanded="false" aria-controls="q3">
+                                    <span data-en="What tools do you use for automation?" data-ar="ما الأدوات التي تستخدمها للأتمتة؟">What tools do you use for automation?</span>
+                                </button>
+                            </h2>
+                            <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" data-en="I primarily use Zapier, Make (Integromat), Airtable, and custom scripts when needed."
+                                     data-ar="أستخدم بشكل أساسي Zapier و Make و Airtable، وسكربتات مخصصة عند الحاجة.">
+                                    I primarily use Zapier, Make (Integromat), Airtable, and custom scripts when needed.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ===================== Contact Section ===================== -->
-    <section id="contact" class="section-padding bg-light-section">
+    <section id="contact" class="section-padding" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="section-title" data-en="Get In Touch" data-ar="تواصل معي">Get In Touch</h2>
@@ -531,7 +983,8 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <form class="contact-form" action="#" method="post">
+                    <!-- استبدل YOUR_FORM_ID بمعرف النموذج من Formspree -->
+                    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="name" placeholder="Your Name" data-en-placeholder="Your Name" data-ar-placeholder="الاسم" required>
@@ -576,6 +1029,8 @@
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <!-- Language Switcher Script -->
     <script>
@@ -619,6 +1074,9 @@
                     localStorage.setItem('lang', lang);
                 }
                 currentLang = lang;
+
+                // إعادة تهيئة Typed.js حسب اللغة
+                initTyped();
             }
 
             // تطبيق اللغة المحفوظة عند التحميل
@@ -629,7 +1087,104 @@
                 const newLang = currentLang === 'en' ? 'ar' : 'en';
                 applyLanguage(newLang);
             });
+
+            // Typed.js
+            function initTyped() {
+                const typedElement = document.getElementById('typed-text');
+                if (!typedElement) return;
+                const strings = [
+                    typedElement.getAttribute('data-en'),
+                    typedElement.getAttribute('data-ar')
+                ];
+                // إزالة أي instance سابق
+                if (window.typedInstance) {
+                    window.typedInstance.destroy();
+                }
+                window.typedInstance = new Typed('#typed-text', {
+                    strings: currentLang === 'ar' ? [strings[1], strings[0]] : [strings[0], strings[1]],
+                    typeSpeed: 60,
+                    backSpeed: 40,
+                    backDelay: 2000,
+                    loop: true
+                });
+            }
+
+            // استدعاء Typed عند التحميل
+            initTyped();
         })();
     </script>
+
+    <!-- Dark Mode Toggle -->
+    <script>
+        (function() {
+            const themeBtn = document.getElementById('themeToggle');
+            const htmlTag = document.getElementById('html-root');
+
+            function setTheme(theme) {
+                htmlTag.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+            }
+
+            // تطبيق الثيم المحفوظ
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            setTheme(savedTheme);
+
+            themeBtn.addEventListener('click', () => {
+                const current = htmlTag.getAttribute('data-theme');
+                setTheme(current === 'dark' ? 'light' : 'dark');
+            });
+        })();
+    </script>
+
+    <!-- Scroll Progress & Back to Top -->
+    <script>
+        (function() {
+            const progressBar = document.getElementById('scrollProgress');
+            const backToTopBtn = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = (scrollTop / docHeight) * 100;
+                progressBar.style.width = progress + '%';
+
+                if (scrollTop > 300) {
+                    backToTopBtn.style.display = 'flex';
+                } else {
+                    backToTopBtn.style.display = 'none';
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+    </script>
+
+    <!-- AOS Initialization -->
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 100 });
+    </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ali Aloufi",
+      "url": "https://yourdomain.com",
+      "image": "images/pic01.jpg",
+      "jobTitle": "Information Systems Student",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "King Faisal University"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/yourprofile",
+        "https://github.com/yourusername"
+      ]
+    }
+    </script>
+
 </body>
 </html>
