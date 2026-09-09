@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" id="html-root" data-theme="light">
+<html lang="en" dir="ltr" id="html-root" data-theme="dark" data-contrast="">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
     <meta name="author" content="Ali Aloufi">
     <meta property="og:title" content="Ali Aloufi | Portfolio">
     <meta property="og:description" content="Building smart workflows and digital solutions.">
-    <meta property="og:image" content="images/pic01.jpg">
+    <meta property="og:image" content="images/ali.jpg">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/png" href="images/favicon.png">
 
@@ -17,547 +17,566 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Google Fonts: Inter للانجليزية و Cairo للعربية -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- AOS Library -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-    <!-- Typed.js CDN -->
+    <!-- Typed.js -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- tsParticles -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
 
     <style>
         :root {
             --primary-color: #1e3a8a;
             --secondary-color: #2563eb;
             --accent-color: #f59e0b;
-            --bg-light: #f8fafc;
+            --bg-glass: rgba(255, 255, 255, 0.12);
+            --bg-glass-hover: rgba(255, 255, 255, 0.2);
+            --bg-glass-border: rgba(255, 255, 255, 0.3);
             --text-dark: #0f172a;
             --text-muted: #475569;
             --white: #ffffff;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
-            --shadow-md: 0 5px 20px rgba(0,0,0,0.08);
-            --transition: all 0.3s ease;
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.15);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --blur: blur(20px);
+            --nav-height: 65px;
         }
 
         [data-theme="dark"] {
-            --bg-light: #1e293b;
+            --bg-glass: rgba(15, 23, 42, 0.35);
+            --bg-glass-hover: rgba(15, 23, 42, 0.55);
+            --bg-glass-border: rgba(255, 255, 255, 0.15);
             --text-dark: #f1f5f9;
             --text-muted: #cbd5e1;
             --white: #0f172a;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
-            --shadow-md: 0 5px 20px rgba(0,0,0,0.3);
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.4);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.6);
             --primary-color: #3b82f6;
             --secondary-color: #60a5fa;
             --accent-color: #fbbf24;
         }
 
+        [data-contrast="high"] {
+            --primary-color: #000000;
+            --secondary-color: #000000;
+            --accent-color: #ffffff;
+            --bg-glass: rgba(255, 255, 255, 0.95);
+            --bg-glass-hover: rgba(255, 255, 255, 1);
+            --bg-glass-border: #000000;
+            --text-dark: #000000;
+            --text-muted: #000000;
+            --white: #ffffff;
+            --shadow-sm: 0 0 0 2px #000;
+            --shadow-md: 0 0 0 4px #000;
+        }
+
         body {
             font-family: 'Inter', 'Cairo', sans-serif;
             color: var(--text-dark);
-            background-color: var(--white);
+            background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+            background-attachment: fixed;
             line-height: 1.7;
             scroll-behavior: smooth;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background 0.3s ease, color 0.3s ease;
+            min-height: 100vh;
+            padding-top: calc(var(--nav-height) + 20px);
+            overflow-x: hidden;
+        }
+        [data-theme="dark"] body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
 
-        [dir="rtl"] body {
-            font-family: 'Cairo', 'Inter', sans-serif;
+        /* نخفي المؤشر الافتراضي فقط على أجهزة الكمبيوتر */
+        @media (hover: hover) and (pointer: fine) {
+            body { cursor: none; }
+            .custom-cursor { display: block; }
+        }
+        @media (hover: none), (pointer: coarse) {
+            .custom-cursor { display: none !important; }
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            margin-bottom: 0.75rem;
+        .custom-cursor {
+            position: fixed;
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            pointer-events: none;
+            z-index: 99999;
+            transition: transform 0.15s ease, background 0.3s ease;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+            display: none;
+        }
+        .custom-cursor.hovered {
+            transform: translate(-50%, -50%) scale(2.5);
+            background: var(--accent-color);
         }
 
-        a {
-            color: var(--secondary-color);
-            text-decoration: none;
+        .aurora-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .aurora-bg::before,
+        .aurora-bg::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: auroraFloat 15s ease-in-out infinite alternate;
+        }
+        .aurora-bg::before {
+            width: 500px; height: 500px;
+            background: var(--primary-color);
+            top: -10%; left: -10%;
+        }
+        .aurora-bg::after {
+            width: 400px; height: 400px;
+            background: var(--accent-color);
+            bottom: -10%; right: -5%;
+            animation-delay: -7s;
+        }
+        @keyframes auroraFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(60px, 40px) scale(1.2); }
+            100% { transform: translate(-40px, -30px) scale(1); }
+        }
+
+        .glass {
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
             transition: var(--transition);
         }
-        a:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
+        .glass:hover {
+            background: var(--bg-glass-hover);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
         }
 
+        /* الشريط العلوي */
+        .navbar {
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: 50px;
+            box-shadow: var(--shadow-md);
+            padding: 0.5rem 1rem;
+            margin: 15px auto 0;
+            max-width: 1100px;
+            width: calc(100% - 30px);
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1030;
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+        [dir="rtl"] .navbar {
+            left: 50%;
+            transform: translateX(50%);
+        }
+        .navbar.scrolled {
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            background: var(--bg-glass-hover);
+            margin-top: 8px;
+            height: 55px;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--primary-color) !important;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .navbar-brand i { font-size: 1.5rem; }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .nav-icon {
+            position: relative;
+            background: transparent;
+            border: none;
+            color: var(--text-dark);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+        .nav-icon:hover {
+            background: var(--bg-glass-hover);
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+        .nav-icon::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            color: var(--text-dark);
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+            border: 1px solid var(--bg-glass-border);
+        }
+        .nav-icon:hover::after {
+            opacity: 1;
+            bottom: -25px;
+        }
+
+        .dropdown-toggle::after { display: none; }
+        .dropdown-menu {
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            padding: 0.5rem;
+            min-width: 200px;
+        }
+        .dropdown-menu .dropdown-item {
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+        .dropdown-menu .dropdown-item:hover {
+            background: var(--bg-glass-hover);
+            color: var(--primary-color);
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .icon-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-dark);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+        .icon-btn:hover {
+            background: var(--bg-glass-hover);
+            color: var(--primary-color);
+            transform: scale(1.05);
+        }
+        .lang-btn-mini {
+            background: transparent;
+            border: 1px solid var(--bg-glass-border);
+            color: var(--text-dark);
+            padding: 0.25rem 0.7rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .lang-btn-mini:hover {
+            background: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+
+        /* الأزرار */
         .btn-primary {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
-            color: white;
+            color: #fff;
             padding: 0.6rem 1.5rem;
             border-radius: 30px;
             font-weight: 600;
+            transition: var(--transition);
         }
         .btn-primary:hover {
             background-color: var(--secondary-color);
             border-color: var(--secondary-color);
-            color: white;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
-
         .btn-outline-primary {
             color: var(--primary-color);
             border-color: var(--primary-color);
             border-radius: 30px;
             font-weight: 600;
+            transition: var(--transition);
         }
         .btn-outline-primary:hover {
             background-color: var(--primary-color);
-            color: white;
+            color: #fff;
+            transform: translateY(-2px);
         }
 
-        .section-padding {
-            padding: 80px 0;
-        }
-
+        .section-padding { padding: 60px 0; }
         .section-title {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 800;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             position: relative;
             display: inline-block;
         }
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
+            width: 50px;
             height: 3px;
             background-color: var(--accent-color);
             border-radius: 2px;
         }
 
-        .bg-light-section {
-            background-color: var(--bg-light);
-            transition: background-color 0.3s ease;
-        }
-
-        /* ========== Header / Navbar ========== */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            padding: 0.75rem 0;
-        }
-        [data-theme="dark"] .navbar {
-            background: rgba(15, 23, 42, 0.95);
-        }
-        .navbar-brand {
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--primary-color) !important;
-        }
-        .navbar-nav .nav-link {
-            font-weight: 600;
-            color: var(--text-dark);
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            transition: var(--transition);
-        }
-        .navbar-nav .nav-link:hover,
-        .navbar-nav .nav-link.active {
-            color: var(--primary-color);
-            background: rgba(37, 99, 235, 0.1);
-        }
-
-        .lang-btn, .theme-btn {
-            background: transparent;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 0.4rem 1.2rem;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-        .lang-btn:hover, .theme-btn:hover {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        /* ========== Scroll Progress Bar ========== */
-        #scrollProgress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: var(--accent-color);
-            z-index: 9999;
-            transition: width 0.2s;
-        }
-
-        /* ========== Back to Top ========== */
-        #backToTop {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            cursor: pointer;
-            z-index: 1000;
-            transition: var(--transition);
-        }
-        [dir="rtl"] #backToTop {
-            right: auto;
-            left: 30px;
-        }
-        #backToTop:hover {
-            background: var(--secondary-color);
-        }
-
-        /* ========== Hero / Banner ========== */
         .hero {
-            padding: 120px 0 80px;
-            background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
-            transition: background 0.3s ease;
-            overflow: hidden;
+            padding: 40px 0 30px;
+            position: relative;
+            min-height: calc(100vh - var(--nav-height) - 30px);
+            display: flex;
+            align-items: center;
         }
-        [data-theme="dark"] .hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        }
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary-color);
-        }
-        .hero p.lead {
-            font-size: 1.25rem;
-            color: var(--text-muted);
+        #particles-js { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+        .hero .container { position: relative; z-index: 1; }
+        .hero h1 { font-size: 3.2rem; font-weight: 800; color: var(--primary-color); margin-bottom: 0.5rem; }
+        .hero p.lead { font-size: 1.2rem; color: var(--text-muted); }
+        .hero-img-wrapper {
+            display: inline-block;
+            position: relative;
+            padding: 10px;
+            border-radius: 50%;
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            border: 1px solid var(--bg-glass-border);
+            box-shadow: var(--shadow-md);
         }
         .hero-img {
-            width: 280px;
-            height: 280px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
-            border: 6px solid white;
-            box-shadow: var(--shadow-md);
             object-fit: cover;
+            display: block;
+            transition: var(--transition);
         }
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
+        .hero-img:hover { transform: scale(1.03); }
+        .hero-buttons { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.5rem; }
 
-        /* ========== About Section ========== */
-        .about-img {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 15px;
-            box-shadow: var(--shadow-md);
-        }
-
-        /* ========== Skills ========== */
-        .skill-item {
-            margin-bottom: 1.5rem;
-        }
-        .skill-header {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 600;
-            margin-bottom: 0.4rem;
-        }
-        .progress {
-            height: 10px;
+        .project-card, .cert-card, .service-card, .testimonial-card, .blog-card {
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border: 1px solid var(--bg-glass-border);
             border-radius: 20px;
-            background-color: #e2e8f0;
-        }
-        .progress-bar {
-            background-color: var(--secondary-color);
-            border-radius: 20px;
-            transition: width 1s ease;
-        }
-
-        /* ========== Portfolio Cards ========== */
-        .project-card {
-            background: var(--white);
-            border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
             height: 100%;
         }
-        .project-card:hover {
-            transform: translateY(-8px);
+        .project-card:hover, .cert-card:hover, .service-card:hover, .testimonial-card:hover, .blog-card:hover {
+            background: var(--bg-glass-hover);
+            transform: translateY(-6px);
             box-shadow: var(--shadow-md);
         }
-        .project-thumb {
-            height: 200px;
-            overflow: hidden;
-        }
-        .project-thumb img {
+        .project-thumb, .blog-thumb { height: 180px; overflow: hidden; }
+        .blog-thumb { height: 160px; }
+        .project-thumb img, .blog-thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--transition);
+            transition: transform 0.5s ease;
         }
-        .project-card:hover .project-thumb img {
-            transform: scale(1.05);
-        }
-        .project-body {
-            padding: 1.5rem;
-        }
-        .project-body h5 {
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-        }
+        .project-card:hover .project-thumb img, .blog-card:hover .blog-thumb img { transform: scale(1.04); }
+        .project-body, .blog-body { padding: 1.3rem; }
         .tech-tag {
             display: inline-block;
-            background: #eef2ff;
+            background: rgba(37, 99, 235, 0.1);
             color: var(--primary-color);
-            padding: 0.2rem 0.75rem;
+            padding: 0.2rem 0.7rem;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 600;
-            margin: 0.15rem;
-        }
-        .project-links {
-            margin-top: 1rem;
-            display: flex;
-            gap: 0.75rem;
+            margin: 0.12rem;
+            border: 1px solid rgba(37, 99, 235, 0.2);
         }
 
-        /* ========== Timeline (Experience) ========== */
-        .timeline {
-            position: relative;
-            padding: 20px 0;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: var(--accent-color);
-        }
-        [dir="rtl"] .timeline::before {
-            left: auto;
-            right: 20px;
-        }
-        .timeline-item {
-            position: relative;
-            padding-left: 50px;
-            margin-bottom: 30px;
-        }
-        [dir="rtl"] .timeline-item {
-            padding-left: 0;
-            padding-right: 50px;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 12px;
-            top: 5px;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            border: 3px solid var(--accent-color);
-        }
-        [dir="rtl"] .timeline-item::before {
-            left: auto;
-            right: 12px;
-        }
-        .timeline-date {
-            font-weight: 700;
-            color: var(--primary-color);
+        .skill-item { margin-bottom: 1.3rem; }
+        .skill-header { display: flex; justify-content: space-between; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.3rem; }
+        .progress { height: 8px; border-radius: 20px; background: rgba(0,0,0,0.08); overflow: hidden; }
+        .progress-bar { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border-radius: 20px; transition: width 1.2s ease; }
+
+        .timeline { position: relative; padding: 15px 0; }
+        .timeline::before { content: ''; position: absolute; left: 18px; top: 0; bottom: 0; width: 2px; background: var(--accent-color); opacity: 0.5; }
+        [dir="rtl"] .timeline::before { left: auto; right: 18px; }
+        .timeline-item { position: relative; padding-left: 45px; margin-bottom: 25px; }
+        [dir="rtl"] .timeline-item { padding-left: 0; padding-right: 45px; }
+        .timeline-item::before { content: ''; position: absolute; left: 10px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--primary-color); border: 3px solid var(--accent-color); }
+        [dir="rtl"] .timeline-item::before { left: auto; right: 10px; }
+        .timeline-date { font-weight: 700; color: var(--primary-color); font-size: 0.9rem; }
+
+        .stats-section { background: var(--bg-glass); backdrop-filter: var(--blur); border: 1px solid var(--bg-glass-border); border-radius: 20px; padding: 30px 20px; }
+        .stat-number { font-size: 2.2rem; font-weight: 800; color: var(--primary-color); }
+        .stat-label { font-weight: 600; color: var(--text-muted); font-size: 0.9rem; }
+
+        .filter-btn { border: 1px solid var(--bg-glass-border); background: var(--bg-glass); color: var(--text-dark); padding: 0.35rem 1rem; border-radius: 30px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: var(--transition); margin: 0.15rem; backdrop-filter: var(--blur); }
+        .filter-btn.active, .filter-btn:hover { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+        .project-item { transition: all 0.4s ease; }
+        .project-item.hide { display: none; }
+
+        .contact-form .form-control { border-radius: 12px; border: 1px solid var(--bg-glass-border); padding: 0.7rem 1rem; background: var(--bg-glass); backdrop-filter: var(--blur); color: var(--text-dark); font-size: 0.9rem; }
+        .contact-form .form-control:focus { border-color: var(--secondary-color); box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.15); }
+
+        .share-buttons a { display: inline-flex; justify-content: center; align-items: center; width: 36px; height: 36px; border-radius: 50%; color: #fff; margin: 0 4px; transition: var(--transition); text-decoration: none; font-size: 0.9rem; }
+        .share-buttons a:hover { transform: scale(1.1); }
+        .share-facebook { background: #1877f2; }
+        .share-twitter { background: #1da1f2; }
+        .share-linkedin { background: #0a66c2; }
+        .share-whatsapp { background: #25d366; }
+
+        footer { background: var(--bg-glass); backdrop-filter: var(--blur); border-top: 1px solid var(--bg-glass-border); color: var(--text-muted); padding: 1.5rem 0; text-align: center; }
+        footer a { color: var(--text-dark); margin: 0 0.4rem; font-size: 1.3rem; transition: var(--transition); }
+        footer a:hover { color: var(--accent-color); }
+
+        #scrollProgress { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: var(--accent-color); z-index: 9999; transition: width 0.2s; }
+
+        #backToTop { position: fixed; bottom: 25px; right: 25px; width: 45px; height: 45px; border-radius: 50%; display: none; justify-content: center; align-items: center; background: var(--primary-color); color: #fff; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2); cursor: pointer; z-index: 1000; transition: var(--transition); font-size: 1.2rem; }
+        [dir="rtl"] #backToTop { right: auto; left: 25px; }
+        #backToTop:hover { background: var(--secondary-color); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+
+        body.reading-mode .hero-buttons,
+        body.reading-mode .project-links,
+        body.reading-mode .social-icons,
+        body.reading-mode .blog-card .btn,
+        body.reading-mode .contact-form,
+        body.reading-mode .share-buttons,
+        body.reading-mode #backToTop,
+        body.reading-mode #particles-js,
+        body.reading-mode .custom-cursor {
+            display: none !important;
         }
 
-        /* ========== Certifications ========== */
-        .cert-card {
-            background: var(--white);
-            border-radius: 15px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow-sm);
-            height: 100%;
-            transition: var(--transition);
-        }
-        .cert-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-        .cert-card i {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 0.75rem;
-        }
+        [dir="rtl"] .hero-buttons { flex-direction: row-reverse; }
+        [dir="rtl"] .project-links { flex-direction: row-reverse; }
+        [dir="rtl"] .navbar-nav { text-align: right; }
+        [dir="rtl"] .me-2 { margin-left: 0.5rem !important; margin-right: 0 !important; }
+        [dir="rtl"] .nav-controls { margin-left: 0; margin-right: auto; }
+        [dir="rtl"] .dropdown-menu { text-align: right; }
 
-        /* ========== Testimonials ========== */
-        .testimonial-card {
-            background: var(--white);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: var(--shadow-sm);
-            text-align: center;
+        @media (max-width: 992px) {
+            .navbar { border-radius: 25px; padding: 0.4rem 1rem; height: 50px; flex-wrap: nowrap; }
+            .nav-icons { gap: 0.1rem; }
+            .nav-icon { width: 35px; height: 35px; font-size: 1rem; }
+            .nav-icon::after { display: none; }
+            .navbar-brand { font-size: 1rem; }
+            .icon-btn { width: 32px; height: 32px; font-size: 0.95rem; }
+            .lang-btn-mini { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
         }
-        .testimonial-text {
-            font-style: italic;
-            color: var(--text-muted);
-        }
-        .testimonial-author {
-            font-weight: 700;
-            margin-top: 1rem;
-        }
-
-        /* ========== Blog Cards ========== */
-        .blog-card {
-            background: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            height: 100%;
-        }
-        .blog-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-md);
-        }
-        .blog-thumb {
-            height: 180px;
-            overflow: hidden;
-        }
-        .blog-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .blog-body {
-            padding: 1.5rem;
-        }
-
-        /* ========== Contact Form ========== */
-        .contact-form .form-control {
-            border-radius: 10px;
-            border: 1px solid #cbd5e1;
-            padding: 0.75rem 1rem;
-        }
-        .contact-form .form-control:focus {
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
-        }
-
-        /* ========== Footer ========== */
-        footer {
-            background: #0f172a;
-            color: #cbd5e1;
-            padding: 2rem 0;
-        }
-        footer a {
-            color: #ffffff;
-            margin: 0 0.5rem;
-            font-size: 1.5rem;
-        }
-        footer a:hover {
-            color: var(--accent-color);
-        }
-
-        /* ========== Scrollbar ========== */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary-color);
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--secondary-color);
-        }
-
-        /* ========== RTL Adjustments ========== */
-        [dir="rtl"] .hero-buttons {
-            flex-direction: row-reverse;
-        }
-        [dir="rtl"] .project-links {
-            flex-direction: row-reverse;
-        }
-        [dir="rtl"] .navbar-nav {
-            text-align: right;
-        }
-        [dir="rtl"] .ms-auto {
-            margin-right: auto !important;
-            margin-left: 0 !important;
-        }
-        [dir="rtl"] .me-2 {
-            margin-left: 0.5rem !important;
-            margin-right: 0 !important;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .hero {
-                padding: 80px 0 60px;
-                text-align: center;
-            }
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            .hero-img {
-                width: 200px;
-                height: 200px;
-                margin-top: 2rem;
-            }
-            .section-padding {
-                padding: 60px 0;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
+            body { padding-top: 60px; }
+            .hero { padding: 30px 0 20px; }
+            .hero h1 { font-size: 2.4rem; }
+            .hero-img { width: 150px; height: 150px; }
+            .hero-img-wrapper { padding: 5px; }
+            .section-padding { padding: 50px 0; }
+            .section-title { font-size: 1.7rem; }
+            .stat-number { font-size: 1.8rem; }
+            .navbar { margin-top: 5px; width: calc(100% - 10px); }
+            .nav-icons { order: 3; margin-left: auto; }
+            .nav-controls { order: 2; }
+            .navbar-brand { order: 1; }
         }
     </style>
 </head>
 <body>
 
-    <!-- شريط تقدم التمرير -->
+    <div class="aurora-bg"></div>
+    <div class="custom-cursor" id="customCursor"></div>
     <div id="scrollProgress"></div>
-
-    <!-- زر العودة للأعلى -->
     <button id="backToTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
 
-    <!-- ===================== Header ===================== -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#" data-en="Ali Aloufi" data-ar="علي العوفي">Ali Aloufi</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-                    <li class="nav-item"><a class="nav-link active" href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about" data-en="About" data-ar="عني">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills" data-en="Skills" data-ar="المهارات">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio" data-en="Portfolio" data-ar="أعمالي">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#experience" data-en="Experience" data-ar="الخبرات">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#certifications" data-en="Certifications" data-ar="الشهادات">Certifications</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#testimonials" data-en="Testimonials" data-ar="التوصيات">Testimonials</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#blog" data-en="Blog" data-ar="المدونة">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#faq" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact" data-en="Contact" data-ar="تواصل معي">Contact</a></li>
-                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0 d-flex gap-2">
-                        <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode"><i class="bi bi-moon-stars"></i></button>
-                        <button id="langToggle" class="lang-btn" aria-label="Toggle language">العربية</button>
-                    </li>
+    <!-- الشريط العلوي -->
+    <nav class="navbar" id="mainNavbar">
+        <a class="navbar-brand" href="#home">
+            <i class="bi bi-code-slash"></i>
+            <span data-en="Ali Aloufi" data-ar="علي العوفي">Ali Aloufi</span>
+        </a>
+
+        <div class="nav-icons">
+            <button class="nav-icon" data-tooltip="Home" onclick="location.href='#home'"><i class="bi bi-house"></i><span class="d-none" data-en="Home" data-ar="الرئيسية">Home</span></button>
+            <button class="nav-icon" data-tooltip="About" onclick="location.href='#about'"><i class="bi bi-person"></i><span class="d-none" data-en="About" data-ar="عني">About</span></button>
+            <button class="nav-icon" data-tooltip="Portfolio" onclick="location.href='#portfolio'"><i class="bi bi-grid"></i><span class="d-none" data-en="Portfolio" data-ar="أعمالي">Portfolio</span></button>
+            <button class="nav-icon" data-tooltip="Contact" onclick="location.href='#contact'"><i class="bi bi-envelope"></i><span class="d-none" data-en="Contact" data-ar="تواصل">Contact</span></button>
+
+            <div class="dropdown">
+                <button class="nav-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-tooltip="More"><i class="bi bi-three-dots"></i></button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#skills" data-en="Skills" data-ar="المهارات">Skills</a></li>
+                    <li><a class="dropdown-item" href="#experience" data-en="Experience" data-ar="الخبرات">Experience</a></li>
+                    <li><a class="dropdown-item" href="#services" data-en="Services" data-ar="الخدمات">Services</a></li>
+                    <li><a class="dropdown-item" href="#certifications" data-en="Certifications" data-ar="الشهادات">Certifications</a></li>
+                    <li><a class="dropdown-item" href="#testimonials" data-en="Testimonials" data-ar="التوصيات">Testimonials</a></li>
+                    <li><a class="dropdown-item" href="#blog" data-en="Blog" data-ar="المدونة">Blog</a></li>
+                    <li><a class="dropdown-item" href="#faq" data-en="FAQ" data-ar="الأسئلة">FAQ</a></li>
                 </ul>
             </div>
         </div>
+
+        <div class="nav-controls">
+            <button id="themeToggle" class="icon-btn" aria-label="Toggle dark mode"><i class="bi bi-moon-stars"></i></button>
+            <button id="contrastToggle" class="icon-btn" aria-label="Toggle high contrast"><i class="bi bi-eye"></i></button>
+            <button id="readingToggle" class="icon-btn" aria-label="Toggle reading mode"><i class="bi bi-book"></i></button>
+            <button id="langToggle" class="lang-btn-mini" aria-label="Toggle language">
+                <span data-lang-en="العربية" data-lang-ar="English">العربية</span>
+            </button>
+        </div>
     </nav>
 
-    <!-- ===================== Hero Section ===================== -->
+    <!-- Hero -->
     <section id="home" class="hero">
+        <div id="particles-js"></div>
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
@@ -568,34 +587,39 @@
                             Information Systems Student & Automation Enthusiast
                         </span>
                     </p>
-                    <p class="text-muted" data-en="Building smart workflows and digital solutions that save time and increase productivity."
-                       data-ar="أبني مسارات عمل ذكية وحلولاً رقمية توفر الوقت وتزيد الإنتاجية.">
-                        Building smart workflows and digital solutions that save time and increase productivity.
+                    <p class="text-muted">
+                        <span id="greeting" data-en="Welcome! I build smart workflows and digital solutions." data-ar="مرحباً! أبني مسارات عمل ذكية وحلولاً رقمية.">
+                            Welcome! I build smart workflows and digital solutions.
+                        </span>
                     </p>
-                    <div class="hero-buttons mt-4">
+                    <div class="hero-buttons">
                         <a href="#portfolio" class="btn btn-primary" data-en="View My Work" data-ar="شاهد أعمالي">View My Work</a>
                         <a href="assets/cv.pdf" download class="btn btn-outline-primary" data-en="Download CV" data-ar="تحميل السيرة الذاتية">Download CV</a>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <img src="images/pic01.jpg" alt="Ali Aloufi" class="hero-img" loading="lazy">
+                    <div class="hero-img-wrapper">
+                        <span class="image">
+                            <img src="images/ali.jpg" alt="Ali Aloufi" class="hero-img" loading="lazy" />
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===================== About Section ===================== -->
+    <!-- About -->
     <section id="about" class="section-padding" data-aos="fade-up">
         <div class="container">
-            <div class="text-center mb-5">
+            <div class="text-center mb-4">
                 <h2 class="section-title" data-en="About Me" data-ar="نبذة عني">About Me</h2>
             </div>
-            <div class="row align-items-center g-5">
+            <div class="row align-items-center g-4">
                 <div class="col-lg-5 text-center" data-aos="fade-right">
-                    <img src="images/pic02.jpg" alt="About Ali" class="about-img" loading="lazy">
+                    <img src="images/pic02.jpg" alt="About Ali" class="img-fluid rounded-4" loading="lazy" style="max-width: 350px; border-radius: 20px; box-shadow: var(--shadow-md);">
                 </div>
                 <div class="col-lg-7" data-aos="fade-left">
-                    <h3 data-en="Welcome to my digital space" data-ar="أهلاً بك في مساحتي الرقمية">Welcome to my digital space</h3>
+                    <h4 data-en="Welcome to my digital space" data-ar="أهلاً بك في مساحتي الرقمية">Welcome to my digital space</h4>
                     <p data-en="I am an Information Systems student at King Faisal University, passionate about bridging business and technology through process automation and modern web solutions."
                        data-ar="أنا طالب نظم معلومات في جامعة الملك فيصل، شغوف بربط الأعمال بالتكنولوجيا من خلال أتمتة العمليات والحلول التقنية الحديثة.">
                         I am an Information Systems student at King Faisal University, passionate about bridging business and technology through process automation and modern web solutions.
@@ -604,7 +628,7 @@
                        data-ar="هدفي هو التخلص من المهام المتكررة باستخدام أدوات الأتمتة وبناء أنظمة نظيفة وفعالة توفر الوقت وتزيد الإنتاجية.">
                         My goal is to eliminate repetitive tasks using no-code/low-code tools and build clean, efficient systems that save time and boost productivity.
                     </p>
-                    <div class="d-flex flex-wrap gap-3 mt-4">
+                    <div class="d-flex flex-wrap gap-3 mt-3">
                         <div><i class="bi bi-mortarboard-fill text-primary me-2"></i><span data-en="King Faisal University" data-ar="جامعة الملك فيصل">King Faisal University</span></div>
                         <div><i class="bi bi-geo-alt-fill text-primary me-2"></i><span data-en="Saudi Arabia" data-ar="المملكة العربية السعودية">Saudi Arabia</span></div>
                     </div>
@@ -613,12 +637,11 @@
         </div>
     </section>
 
-    <!-- ===================== Skills Section ===================== -->
-    <section id="skills" class="section-padding bg-light-section" data-aos="fade-up">
+    <!-- Skills -->
+    <section id="skills" class="section-padding" data-aos="fade-up">
         <div class="container">
-            <div class="text-center mb-5">
+            <div class="text-center mb-4">
                 <h2 class="section-title" data-en="Skills" data-ar="المهارات">Skills</h2>
-                <p class="text-muted" data-en="Technologies and tools I work with" data-ar="التقنيات والأدوات التي أعمل بها">Technologies and tools I work with</p>
             </div>
             <div class="row g-4">
                 <div class="col-md-6" data-aos="fade-right">
@@ -653,82 +676,57 @@
         </div>
     </section>
 
-    <!-- ===================== Portfolio Section ===================== -->
+    <!-- Portfolio -->
     <section id="portfolio" class="section-padding" data-aos="fade-up">
         <div class="container">
-            <div class="text-center mb-5">
+            <div class="text-center mb-4">
                 <h2 class="section-title" data-en="Featured Projects" data-ar="المشاريع المميزة">Featured Projects</h2>
-                <p class="text-muted" data-en="A showcase of my automation and systems projects" data-ar="عرض لأبرز مشاريعي في الأتمتة وتطوير الأنظمة">A showcase of my automation and systems projects</p>
+                <div class="mt-3">
+                    <button class="filter-btn active" data-filter="all" data-en="All" data-ar="الكل">All</button>
+                    <button class="filter-btn" data-filter="automation" data-en="Automation" data-ar="أتمتة">Automation</button>
+                    <button class="filter-btn" data-filter="web" data-en="Web" data-ar="ويب">Web</button>
+                    <button class="filter-btn" data-filter="database" data-en="Database" data-ar="قواعد بيانات">Database</button>
+                </div>
             </div>
-            <div class="row g-4">
-                <!-- مشروع 1 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="row g-4" id="project-container">
+                <div class="col-md-6 col-lg-4 project-item" data-category="automation" data-aos="fade-up" data-aos-delay="50">
                     <div class="project-card">
-                        <div class="project-thumb">
-                            <img src="images/pic03.jpg" alt="Order Tracking System" loading="lazy">
-                        </div>
+                        <div class="project-thumb"><img src="images/pic03.jpg" alt="Order Tracking" loading="lazy"></div>
                         <div class="project-body">
                             <h5 data-en="Order Tracking System" data-ar="نظام تتبع الطلبات">Order Tracking System</h5>
-                            <p class="text-muted" data-en="Automated order tracking using Airtable and Make, with real-time notifications."
-                               data-ar="أتمتة تتبع الطلبات باستخدام Airtable و Make مع إشعارات فورية.">
-                                Automated order tracking using Airtable and Make, with real-time notifications.
-                            </p>
-                            <div>
-                                <span class="tech-tag">Airtable</span>
-                                <span class="tech-tag">Make</span>
-                                <span class="tech-tag">Zapier</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-sm btn-outline-primary">GitHub</a>
-                                <a href="#" class="btn btn-sm btn-primary">Live Demo</a>
+                            <p class="text-muted small" data-en="Automated tracking using Airtable and Make." data-ar="أتمتة التتبع باستخدام Airtable و Make.">Automated tracking using Airtable and Make.</p>
+                            <div><span class="tech-tag">Airtable</span><span class="tech-tag">Make</span><span class="tech-tag">Zapier</span></div>
+                            <div class="project-links mt-3">
+                                <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal1" data-en="Details" data-ar="تفاصيل">Details</a>
+                                <a href="https://github.com/AliAloufi2050" class="btn btn-sm btn-primary">GitHub</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- مشروع 2 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-md-6 col-lg-4 project-item" data-category="web" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-card">
-                        <div class="project-thumb">
-                            <img src="images/pic04.jpg" alt="University Portal" loading="lazy">
-                        </div>
+                        <div class="project-thumb"><img src="images/pic04.jpg" alt="University Portal" loading="lazy"></div>
                         <div class="project-body">
                             <h5 data-en="University Portal" data-ar="بوابة الجامعة">University Portal</h5>
-                            <p class="text-muted" data-en="Responsive web portal for students to access schedules and grades."
-                               data-ar="بوابة ويب متجاوبة للطلاب للوصول إلى الجداول والدرجات.">
-                                Responsive web portal for students to access schedules and grades.
-                            </p>
-                            <div>
-                                <span class="tech-tag">HTML</span>
-                                <span class="tech-tag">CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-sm btn-outline-primary">GitHub</a>
-                                <a href="#" class="btn btn-sm btn-primary">Live Demo</a>
+                            <p class="text-muted small" data-en="Responsive portal for students." data-ar="بوابة متجاوبة للطلاب.">Responsive portal for students.</p>
+                            <div><span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JS</span></div>
+                            <div class="project-links mt-3">
+                                <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal2" data-en="Details" data-ar="تفاصيل">Details</a>
+                                <a href="https://github.com/AliAloufi2050" class="btn btn-sm btn-primary">GitHub</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- مشروع 3 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-md-6 col-lg-4 project-item" data-category="database" data-aos="fade-up" data-aos-delay="150">
                     <div class="project-card">
-                        <div class="project-thumb">
-                            <img src="images/pic01.jpg" alt="Inventory Management" loading="lazy">
-                        </div>
+                        <div class="project-thumb"><img src="images/ali.jpg" alt="Inventory Management" loading="lazy"></div>
                         <div class="project-body">
                             <h5 data-en="Inventory Management" data-ar="إدارة المخزون">Inventory Management</h5>
-                            <p class="text-muted" data-en="Database-driven inventory system with barcode scanning and reporting."
-                               data-ar="نظام مخزون قائم على قاعدة البيانات مع مسح الباركود والتقارير.">
-                                Database-driven inventory system with barcode scanning and reporting.
-                            </p>
-                            <div>
-                                <span class="tech-tag">MySQL</span>
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Flask</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-sm btn-outline-primary">GitHub</a>
-                                <a href="#" class="btn btn-sm btn-primary">Live Demo</a>
+                            <p class="text-muted small" data-en="Database-driven tracking system." data-ar="نظام تتبع قائم على قاعدة البيانات.">Database-driven tracking system.</p>
+                            <div><span class="tech-tag">MySQL</span><span class="tech-tag">Python</span></div>
+                            <div class="project-links mt-3">
+                                <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal3" data-en="Details" data-ar="تفاصيل">Details</a>
+                                <a href="https://github.com/AliAloufi2050" class="btn btn-sm btn-primary">GitHub</a>
                             </div>
                         </div>
                     </div>
@@ -737,39 +735,97 @@
         </div>
     </section>
 
-    <!-- ===================== Experience Section ===================== -->
-    <section id="experience" class="section-padding bg-light-section" data-aos="fade-up">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title" data-en="Experience" data-ar="الخبرات">Experience</h2>
-                <p class="text-muted" data-en="My professional and educational journey" data-ar="مسيرتي المهنية والتعليمية">My professional and educational journey</p>
+    <!-- Modals -->
+    <div class="modal fade" id="projectModal1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass">
+                <div class="modal-header"><h5 class="modal-title" data-en="Order Tracking System" data-ar="نظام تتبع الطلبات">Order Tracking System</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div class="modal-body"><p data-en="Full details of the automation project." data-ar="تفاصيل كاملة عن مشروع الأتمتة.">Full details of the automation project.</p></div>
             </div>
+        </div>
+    </div>
+    <div class="modal fade" id="projectModal2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass">
+                <div class="modal-header"><h5 class="modal-title" data-en="University Portal" data-ar="بوابة الجامعة">University Portal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div class="modal-body"><p data-en="Full details of the web portal project." data-ar="تفاصيل كاملة عن مشروع البوابة.">Full details of the web portal project.</p></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="projectModal3" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass">
+                <div class="modal-header"><h5 class="modal-title" data-en="Inventory Management" data-ar="إدارة المخزون">Inventory Management</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div class="modal-body"><p data-en="Full details of the database project." data-ar="تفاصيل كاملة عن مشروع قاعدة البيانات.">Full details of the database project.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <section id="stats" class="section-padding" data-aos="fade-up">
+        <div class="container">
+            <div class="stats-section">
+                <div class="row text-center">
+                    <div class="col-md-3 col-6"><div class="stat-number counter" data-target="3">0</div><div class="stat-label" data-en="Projects" data-ar="مشاريع">Projects</div></div>
+                    <div class="col-md-3 col-6"><div class="stat-number counter" data-target="2">0</div><div class="stat-label" data-en="Years" data-ar="سنوات">Years</div></div>
+                    <div class="col-md-3 col-6"><div class="stat-number counter" data-target="5">0</div><div class="stat-label" data-en="Clients" data-ar="عملاء">Clients</div></div>
+                    <div class="col-md-3 col-6"><div class="stat-number counter" data-target="4">0</div><div class="stat-label" data-en="Certs" data-ar="شهادات">Certs</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section-padding" data-aos="fade-up">
+        <div class="container">
+            <div class="text-center mb-4"><h2 class="section-title" data-en="Services" data-ar="الخدمات">Services</h2></div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="50">
+                    <div class="service-card text-center p-4">
+                        <i class="bi bi-gear-wide-connected display-4 text-primary"></i>
+                        <h5 data-en="Automation" data-ar="أتمتة">Automation</h5>
+                        <p class="small" data-en="No-code workflow automation." data-ar="أتمتة سير العمل بدون كود.">No-code workflow automation.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card text-center p-4">
+                        <i class="bi bi-code-slash display-4 text-primary"></i>
+                        <h5 data-en="Web Dev" data-ar="تطوير ويب">Web Dev</h5>
+                        <p class="small" data-en="Modern responsive websites." data-ar="مواقع حديثة متجاوبة.">Modern responsive websites.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
+                    <div class="service-card text-center p-4">
+                        <i class="bi bi-database display-4 text-primary"></i>
+                        <h5 data-en="Databases" data-ar="قواعد بيانات">Databases</h5>
+                        <p class="small" data-en="Efficient database design." data-ar="تصميم قواعد بيانات فعال.">Efficient database design.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="section-padding" data-aos="fade-up">
+        <div class="container">
+            <div class="text-center mb-4"><h2 class="section-title" data-en="Experience" data-ar="الخبرات">Experience</h2></div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="timeline">
                         <div class="timeline-item" data-aos="fade-up">
-                            <h5 class="timeline-date">2024 - الآن</h5>
+                            <h6 class="timeline-date">2024 - Now</h6>
                             <h6 data-en="Freelance Automation Specialist" data-ar="أخصائي أتمتة مستقل">Freelance Automation Specialist</h6>
-                            <p class="text-muted" data-en="Designing and implementing automated workflows for small businesses using no-code tools."
-                               data-ar="تصميم وتنفيذ مسارات عمل مؤتمتة للشركات الصغيرة باستخدام أدوات بدون كود.">
-                                Designing and implementing automated workflows for small businesses using no-code tools.
-                            </p>
+                        </div>
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="50">
+                            <h6 class="timeline-date">2022 - 2024</h6>
+                            <h6 data-en="Information Systems Student" data-ar="طالب نظم معلومات">Information Systems Student</h6>
                         </div>
                         <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
-                            <h5 class="timeline-date">2022 - 2024</h5>
-                            <h6 data-en="Information Systems Student" data-ar="طالب نظم معلومات">Information Systems Student</h6>
-                            <p class="text-muted" data-en="King Faisal University - Majoring in Information Systems, focusing on business process automation and database management."
-                               data-ar="جامعة الملك فيصل - تخصص نظم معلومات، مع التركيز على أتمتة العمليات وإدارة قواعد البيانات.">
-                                King Faisal University - Majoring in Information Systems, focusing on business process automation and database management.
-                            </p>
-                        </div>
-                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
-                            <h5 class="timeline-date">2021 - 2022</h5>
+                            <h6 class="timeline-date">2021 - 2022</h6>
                             <h6 data-en="Web Development Trainee" data-ar="متدرب تطوير ويب">Web Development Trainee</h6>
-                            <p class="text-muted" data-en="Completed an intensive training program covering HTML, CSS, JavaScript, and responsive design."
-                               data-ar="أكملت برنامج تدريبي مكثف في HTML و CSS و JavaScript والتصميم المتجاوب.">
-                                Completed an intensive training program covering HTML, CSS, JavaScript, and responsive design.
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -777,85 +833,62 @@
         </div>
     </section>
 
-    <!-- ===================== Certifications Section ===================== -->
+    <!-- Certifications -->
     <section id="certifications" class="section-padding" data-aos="fade-up">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title" data-en="Certifications" data-ar="الشهادات">Certifications</h2>
-                <p class="text-muted" data-en="Courses and certificates I have earned" data-ar="الدورات والشهادات التي حصلت عليها">Courses and certificates I have earned</p>
-            </div>
+            <div class="text-center mb-4"><h2 class="section-title" data-en="Certifications" data-ar="الشهادات">Certifications</h2></div>
             <div class="row g-4">
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="50">
+                    <div class="cert-card text-center p-4">
+                        <i class="bi bi-award-fill display-4 text-primary"></i>
+                        <h6 data-en="Zapier Automation" data-ar="أتمتة Zapier">Zapier Automation</h6>
+                        <p class="small text-muted">Udemy - 2024</p>
+                    </div>
+                </div>
                 <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
-                    <div class="cert-card text-center">
-                        <i class="bi bi-award-fill"></i>
-                        <h5 data-en="Automation with Zapier" data-ar="الأتمتة باستخدام Zapier">Automation with Zapier</h5>
-                        <p class="text-muted" data-en="Udemy - 2024" data-ar="يوديمي - 2024">Udemy - 2024</p>
+                    <div class="cert-card text-center p-4">
+                        <i class="bi bi-award-fill display-4 text-primary"></i>
+                        <h6 data-en="Responsive Web Design" data-ar="تصميم الويب المتجاوب">Responsive Web Design</h6>
+                        <p class="small text-muted">freeCodeCamp - 2023</p>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
-                    <div class="cert-card text-center">
-                        <i class="bi bi-award-fill"></i>
-                        <h5 data-en="Responsive Web Design" data-ar="تصميم الويب المتجاوب">Responsive Web Design</h5>
-                        <p class="text-muted" data-en="freeCodeCamp - 2023" data-ar="freeCodeCamp - 2023">freeCodeCamp - 2023</p>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="flip-left" data-aos-delay="300">
-                    <div class="cert-card text-center">
-                        <i class="bi bi-award-fill"></i>
-                        <h5 data-en="Database Fundamentals" data-ar="أساسيات قواعد البيانات">Database Fundamentals</h5>
-                        <p class="text-muted" data-en="Coursera - 2023" data-ar="كورسيرا - 2023">Coursera - 2023</p>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="150">
+                    <div class="cert-card text-center p-4">
+                        <i class="bi bi-award-fill display-4 text-primary"></i>
+                        <h6 data-en="Database Fundamentals" data-ar="أساسيات قواعد البيانات">Database Fundamentals</h6>
+                        <p class="small text-muted">Coursera - 2023</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===================== Testimonials Section ===================== -->
-    <section id="testimonials" class="section-padding bg-light-section" data-aos="fade-up">
+    <!-- Testimonials -->
+    <section id="testimonials" class="section-padding" data-aos="fade-up">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title" data-en="Testimonials" data-ar="التوصيات">Testimonials</h2>
-                <p class="text-muted" data-en="What people say about working with me" data-ar="ماذا يقول الناس عن العمل معي">What people say about working with me</p>
-            </div>
+            <div class="text-center mb-4"><h2 class="section-title" data-en="Testimonials" data-ar="التوصيات">Testimonials</h2></div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <div class="testimonial-card">
-                                    <p class="testimonial-text" data-en="“Ali is an exceptional automation specialist. He helped us streamline our order processing and save countless hours.”"
-                                       data-ar="“علي متخصص أتمتة استثنائي. ساعدنا في تبسيط معالجة الطلبات وتوفير ساعات لا تحصى.”">
-                                        “Ali is an exceptional automation specialist. He helped us streamline our order processing and save countless hours.”
-                                    </p>
-                                    <p class="testimonial-author" data-en="- Mohammed Al-Sayed, CEO of TechStart" data-ar="- محمد السيد، الرئيس التنفيذي لشركة TechStart">- Mohammed Al-Sayed, CEO of TechStart</p>
+                                <div class="testimonial-card glass p-4 text-center">
+                                    <p class="testimonial-text small" data-en="“Ali is an exceptional automation specialist.”" data-ar="“علي متخصص أتمتة استثنائي.”">“Ali is an exceptional automation specialist.”</p>
+                                    <p class="testimonial-author small" data-en="- Mohammed, CEO" data-ar="- محمد، رئيس تنفيذي">- Mohammed, CEO</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <div class="testimonial-card">
-                                    <p class="testimonial-text" data-en="“Working with Ali was a pleasure. His web development skills are top-notch and he delivered on time.”"
-                                       data-ar="“العمل مع علي كان ممتعاً. مهاراته في تطوير الويب ممتازة وقد سلم في الوقت المحدد.”">
-                                        “Working with Ali was a pleasure. His web development skills are top-notch and he delivered on time.”
-                                    </p>
-                                    <p class="testimonial-author" data-en="- Sarah Johnson, Project Manager" data-ar="- سارة جونسون، مديرة مشروع">- Sarah Johnson, Project Manager</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="testimonial-card">
-                                    <p class="testimonial-text" data-en="“Ali’s database management system transformed our inventory tracking. Highly recommended!”"
-                                       data-ar="“نظام إدارة قواعد البيانات الخاص بعلي غيّر تتبع مخزوننا. أنصح به بشدة!”">
-                                        “Ali’s database management system transformed our inventory tracking. Highly recommended!”
-                                    </p>
-                                    <p class="testimonial-author" data-en="- Ahmed Al-Qahtani, Operations Manager" data-ar="- أحمد القحطاني، مدير العمليات">- Ahmed Al-Qahtani, Operations Manager</p>
+                                <div class="testimonial-card glass p-4 text-center">
+                                    <p class="testimonial-text small" data-en="“His web skills are top-notch.”" data-ar="“مهاراته في الويب ممتازة.”">“His web skills are top-notch.”</p>
+                                    <p class="testimonial-author small" data-en="- Sarah, PM" data-ar="- سارة، مديرة">- Sarah, PM</p>
                                 </div>
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
+                            <span class="carousel-control-prev-icon"></span>
                         </button>
                         <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
+                            <span class="carousel-control-next-icon"></span>
                         </button>
                     </div>
                 </div>
@@ -863,56 +896,35 @@
         </div>
     </section>
 
-    <!-- ===================== Blog / Articles Section ===================== -->
+    <!-- Blog -->
     <section id="blog" class="section-padding" data-aos="fade-up">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title" data-en="Latest Articles" data-ar="أحدث المقالات">Latest Articles</h2>
-                <p class="text-muted" data-en="Thoughts and insights on technology and automation" data-ar="أفكار ورؤى حول التكنولوجيا والأتمتة">Thoughts and insights on technology and automation</p>
-            </div>
+            <div class="text-center mb-4"><h2 class="section-title" data-en="Blog" data-ar="المدونة">Blog</h2></div>
             <div class="row g-4">
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="50">
                     <div class="blog-card">
-                        <div class="blog-thumb">
-                            <img src="images/pic03.jpg" alt="Article 1" loading="lazy">
-                        </div>
+                        <div class="blog-thumb"><img src="images/pic03.jpg" alt="Article" loading="lazy"></div>
                         <div class="blog-body">
-                            <h5 data-en="Getting Started with Process Automation" data-ar="البدء في أتمتة العمليات">Getting Started with Process Automation</h5>
-                            <p class="text-muted" data-en="A beginner's guide to automating repetitive tasks using no-code tools like Zapier and Make."
-                               data-ar="دليل المبتدئين لأتمتة المهام المتكررة باستخدام أدوات بدون كود مثل Zapier و Make.">
-                                A beginner's guide to automating repetitive tasks using no-code tools like Zapier and Make.
-                            </p>
-                            <a href="#" class="btn btn-sm btn-outline-primary" data-en="Read More" data-ar="اقرأ المزيد">Read More</a>
+                            <h6 data-en="Automation Guide" data-ar="دليل الأتمتة">Automation Guide</h6>
+                            <a href="#" class="btn btn-sm btn-outline-primary" data-en="Read" data-ar="اقرأ">Read</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="blog-card">
-                        <div class="blog-thumb">
-                            <img src="images/pic04.jpg" alt="Article 2" loading="lazy">
-                        </div>
+                        <div class="blog-thumb"><img src="images/pic04.jpg" alt="Article" loading="lazy"></div>
                         <div class="blog-body">
-                            <h5 data-en="Building Responsive Web Portals" data-ar="بناء بوابات ويب متجاوبة">Building Responsive Web Portals</h5>
-                            <p class="text-muted" data-en="Learn how to create modern web interfaces that work on any device using Bootstrap."
-                               data-ar="تعلم كيفية إنشاء واجهات ويب حديثة تعمل على أي جهاز باستخدام Bootstrap.">
-                                Learn how to create modern web interfaces that work on any device using Bootstrap.
-                            </p>
-                            <a href="#" class="btn btn-sm btn-outline-primary" data-en="Read More" data-ar="اقرأ المزيد">Read More</a>
+                            <h6 data-en="Responsive Design" data-ar="التصميم المتجاوب">Responsive Design</h6>
+                            <a href="#" class="btn btn-sm btn-outline-primary" data-en="Read" data-ar="اقرأ">Read</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
                     <div class="blog-card">
-                        <div class="blog-thumb">
-                            <img src="images/pic01.jpg" alt="Article 3" loading="lazy">
-                        </div>
+                        <div class="blog-thumb"><img src="images/ali.jpg" alt="Article" loading="lazy"></div>
                         <div class="blog-body">
-                            <h5 data-en="Database Design Best Practices" data-ar="أفضل ممارسات تصميم قواعد البيانات">Database Design Best Practices</h5>
-                            <p class="text-muted" data-en="Tips for structuring efficient and scalable databases for your projects."
-                               data-ar="نصائح لهيكلة قواعد بيانات فعالة وقابلة للتوسع لمشاريعك.">
-                                Tips for structuring efficient and scalable databases for your projects.
-                            </p>
-                            <a href="#" class="btn btn-sm btn-outline-primary" data-en="Read More" data-ar="اقرأ المزيد">Read More</a>
+                            <h6 data-en="Database Tips" data-ar="نصائح قواعد البيانات">Database Tips</h6>
+                            <a href="#" class="btn btn-sm btn-outline-primary" data-en="Read" data-ar="اقرأ">Read</a>
                         </div>
                     </div>
                 </div>
@@ -920,52 +932,31 @@
         </div>
     </section>
 
-    <!-- ===================== FAQ Section ===================== -->
-    <section id="faq" class="section-padding bg-light-section" data-aos="fade-up">
+    <!-- FAQ -->
+    <section id="faq" class="section-padding" data-aos="fade-up">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title" data-en="Frequently Asked Questions" data-ar="الأسئلة الشائعة">Frequently Asked Questions</h2>
-            </div>
+            <div class="text-center mb-4"><h2 class="section-title" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</h2></div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="accordion" id="faqAccordion">
-                        <div class="accordion-item">
+                        <div class="accordion-item glass mb-2">
                             <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1" aria-expanded="true" aria-controls="q1">
-                                    <span data-en="What services do you offer?" data-ar="ما الخدمات التي تقدمها؟">What services do you offer?</span>
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+                                    <span data-en="What services?" data-ar="ما الخدمات؟">What services?</span>
                                 </button>
                             </h2>
                             <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body" data-en="I offer process automation, web development, and database management services."
-                                     data-ar="أقدم خدمات أتمتة العمليات، تطوير الويب، وإدارة قواعد البيانات.">
-                                    I offer process automation, web development, and database management services.
-                                </div>
+                                <div class="accordion-body small" data-en="Automation, web, databases." data-ar="أتمتة، ويب، قواعد بيانات.">Automation, web, databases.</div>
                             </div>
                         </div>
-                        <div class="accordion-item">
+                        <div class="accordion-item glass mb-2">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2" aria-expanded="false" aria-controls="q2">
-                                    <span data-en="Are you available for freelance work?" data-ar="هل أنت متاح للعمل الحر؟">Are you available for freelance work?</span>
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
+                                    <span data-en="Freelance?" data-ar="عمل حر؟">Freelance?</span>
                                 </button>
                             </h2>
                             <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body" data-en="Yes, I am open to freelance projects and collaborations. Feel free to contact me."
-                                     data-ar="نعم، أنا منفتح للمشاريع المستقلة والتعاون. لا تتردد في التواصل معي.">
-                                    Yes, I am open to freelance projects and collaborations. Feel free to contact me.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3" aria-expanded="false" aria-controls="q3">
-                                    <span data-en="What tools do you use for automation?" data-ar="ما الأدوات التي تستخدمها للأتمتة؟">What tools do you use for automation?</span>
-                                </button>
-                            </h2>
-                            <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body" data-en="I primarily use Zapier, Make (Integromat), Airtable, and custom scripts when needed."
-                                     data-ar="أستخدم بشكل أساسي Zapier و Make و Airtable، وسكربتات مخصصة عند الحاجة.">
-                                    I primarily use Zapier, Make (Integromat), Airtable, and custom scripts when needed.
-                                </div>
+                                <div class="accordion-body small" data-en="Yes, open." data-ar="نعم، متاح.">Yes, open.</div>
                             </div>
                         </div>
                     </div>
@@ -974,217 +965,218 @@
         </div>
     </section>
 
-    <!-- ===================== Contact Section ===================== -->
+    <!-- Contact -->
     <section id="contact" class="section-padding" data-aos="fade-up">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title" data-en="Get In Touch" data-ar="تواصل معي">Get In Touch</h2>
-                <p class="text-muted" data-en="Have a project in mind or just want to say hello?" data-ar="هل لديك مشروع أو تريد فقط إلقاء التحية؟">Have a project in mind or just want to say hello?</p>
-            </div>
+            <div class="text-center mb-4"><h2 class="section-title" data-en="Contact" data-ar="تواصل">Contact</h2></div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <!-- استبدل YOUR_FORM_ID بمعرف النموذج من Formspree -->
                     <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                         <div class="row g-3">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" placeholder="Your Name" data-en-placeholder="Your Name" data-ar-placeholder="الاسم" required>
-                            </div>
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" placeholder="Your Email" data-en-placeholder="Your Email" data-ar-placeholder="البريد الإلكتروني" required>
-                            </div>
-                            <div class="col-12">
-                                <textarea class="form-control" name="message" rows="5" placeholder="Your Message" data-en-placeholder="Your Message" data-ar-placeholder="رسالتك" required></textarea>
-                            </div>
-                            <div class="col-12 text-center">
-                                <button type="submit" class="btn btn-primary px-5" data-en="Send Message" data-ar="إرسال الرسالة">Send Message</button>
-                            </div>
+                            <div class="col-md-6"><input type="text" class="form-control" name="name" placeholder="Name" data-en-placeholder="Name" data-ar-placeholder="الاسم" required></div>
+                            <div class="col-md-6"><input type="email" class="form-control" name="email" placeholder="Email" data-en-placeholder="Email" data-ar-placeholder="البريد" required></div>
+                            <div class="col-12"><textarea class="form-control" name="message" rows="4" placeholder="Message" data-en-placeholder="Message" data-ar-placeholder="رسالة" required></textarea></div>
+                            <div class="col-12 text-center"><button type="submit" class="btn btn-primary px-4" data-en="Send" data-ar="إرسال">Send</button></div>
                         </div>
                     </form>
                 </div>
-                <div class="col-lg-4 mt-4 mt-lg-0">
-                    <div class="bg-white p-4 rounded shadow-sm">
-                        <h5 data-en="Contact Information" data-ar="معلومات التواصل">Contact Information</h5>
-                        <ul class="list-unstyled mt-3">
-                            <li class="mb-2"><i class="bi bi-envelope-fill me-2 text-primary"></i> <a href="mailto:your.email@example.com">your.email@example.com</a></li>
-                            <li class="mb-2"><i class="bi bi-telephone-fill me-2 text-primary"></i> <a href="tel:+966500000000">+966 50 000 0000</a></li>
-                            <li class="mb-2"><i class="bi bi-geo-alt-fill me-2 text-primary"></i> <span data-en="Saudi Arabia" data-ar="المملكة العربية السعودية">Saudi Arabia</span></li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- ===================== Footer ===================== -->
-    <footer class="text-center">
+    <!-- Footer -->
+    <footer>
         <div class="container">
-            <div class="mb-3">
-                <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                <a href="https://github.com/yourusername" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
-                <a href="mailto:your.email@example.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            <div class="mb-2 social-icons">
+                <a href="https://www.instagram.com/ali.aloufi.5682?stkn=MXRlY2RhdWxzNWR4Nw%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://t.me/AliAloufi5682" target="_blank" rel="noopener" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+                <a href="https://www.tiktok.com/@ali.aloufi.5682?_r=1&_t=ZS-99X3GBetAGN" target="_blank" rel="noopener" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                <a href="https://www.facebook.com/share/18sa8Fmtjm/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://discord.gg/tbvufahq" target="_blank" rel="noopener" aria-label="Discord"><i class="bi bi-discord"></i></a>
+                <a href="https://github.com/AliAloufi2050" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
             </div>
-            <p class="mb-0 small">&copy; <span data-en="Ali Aloufi. All rights reserved." data-ar="علي العوفي. جميع الحقوق محفوظة.">Ali Aloufi. All rights reserved.</span></p>
+            <p class="small mb-0">&copy; <span data-en="Ali Aloufi" data-ar="علي العوفي">Ali Aloufi</span></p>
         </div>
     </footer>
 
-    <!-- Bootstrap JS Bundle -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
-    <!-- Language Switcher Script -->
     <script>
+        // Language Switcher
         (function() {
             let currentLang = localStorage.getItem('lang') || 'en';
-
             function applyLanguage(lang, updateStorage = true) {
                 const htmlTag = document.getElementById('html-root');
-                const langBtn = document.getElementById('langToggle');
+                const langBtns = document.querySelectorAll('#langToggle span');
                 const titleTag = document.getElementById('page-title');
-
                 if (lang === 'ar') {
                     htmlTag.setAttribute('dir', 'rtl');
                     htmlTag.setAttribute('lang', 'ar');
-                    langBtn.textContent = 'English';
                     titleTag.textContent = 'علي العوفي | معرض الأعمال';
+                    langBtns.forEach(s => s.textContent = s.getAttribute('data-lang-ar') || 'English');
                 } else {
                     htmlTag.setAttribute('dir', 'ltr');
                     htmlTag.setAttribute('lang', 'en');
-                    langBtn.textContent = 'العربية';
                     titleTag.textContent = 'Ali Aloufi | Portfolio';
+                    langBtns.forEach(s => s.textContent = s.getAttribute('data-lang-en') || 'العربية');
                 }
-
-                // تحديث النصوص
-                document.querySelectorAll('[data-en]').forEach(element => {
-                    const text = element.getAttribute(`data-${lang}`);
-                    if (text) {
-                        element.textContent = text;
-                    }
+                document.querySelectorAll('[data-en]').forEach(el => {
+                    const text = el.getAttribute(`data-${lang}`);
+                    if (text) el.textContent = text;
                 });
-
-                // تحديث placeholders
-                document.querySelectorAll('[data-en-placeholder]').forEach(element => {
-                    const placeholder = element.getAttribute(`data-${lang}-placeholder`);
-                    if (placeholder) {
-                        element.placeholder = placeholder;
-                    }
+                document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+                    const placeholder = el.getAttribute(`data-${lang}-placeholder`);
+                    if (placeholder) el.placeholder = placeholder;
                 });
-
-                if (updateStorage) {
-                    localStorage.setItem('lang', lang);
-                }
+                if (updateStorage) localStorage.setItem('lang', lang);
                 currentLang = lang;
-
-                // إعادة تهيئة Typed.js حسب اللغة
                 initTyped();
+                updateGreeting();
             }
-
-            // تطبيق اللغة المحفوظة عند التحميل
             applyLanguage(currentLang, false);
+            document.getElementById('langToggle').addEventListener('click', () => applyLanguage(currentLang === 'en' ? 'ar' : 'en'));
 
-            // ربط زر التبديل
-            document.getElementById('langToggle').addEventListener('click', function() {
-                const newLang = currentLang === 'en' ? 'ar' : 'en';
-                applyLanguage(newLang);
-            });
-
-            // Typed.js
             function initTyped() {
-                const typedElement = document.getElementById('typed-text');
-                if (!typedElement) return;
-                const strings = [
-                    typedElement.getAttribute('data-en'),
-                    typedElement.getAttribute('data-ar')
-                ];
-                // إزالة أي instance سابق
-                if (window.typedInstance) {
-                    window.typedInstance.destroy();
-                }
+                const el = document.getElementById('typed-text');
+                if (!el) return;
+                if (window.typedInstance) window.typedInstance.destroy();
                 window.typedInstance = new Typed('#typed-text', {
-                    strings: currentLang === 'ar' ? [strings[1], strings[0]] : [strings[0], strings[1]],
+                    strings: [el.getAttribute('data-en'), el.getAttribute('data-ar')],
                     typeSpeed: 60,
                     backSpeed: 40,
                     backDelay: 2000,
                     loop: true
                 });
             }
-
-            // استدعاء Typed عند التحميل
+            function updateGreeting() {
+                const greet = document.getElementById('greeting');
+                if (greet) {
+                    const hour = new Date().getHours();
+                    if (hour < 12) greet.textContent = currentLang === 'ar' ? 'صباح الخير! أبني مسارات عمل ذكية.' : 'Good morning! I build smart workflows.';
+                    else if (hour < 18) greet.textContent = currentLang === 'ar' ? 'مساء الخير! أتمتة وحلول رقمية.' : 'Good afternoon! Automation and digital solutions.';
+                    else greet.textContent = currentLang === 'ar' ? 'مساء الليل! استمتع بتصفح مشاريعي.' : 'Good evening! Enjoy browsing my projects.';
+                }
+            }
+            updateGreeting();
             initTyped();
         })();
-    </script>
 
-    <!-- Dark Mode Toggle -->
-    <script>
+        // Dark Mode
         (function() {
-            const themeBtn = document.getElementById('themeToggle');
-            const htmlTag = document.getElementById('html-root');
-
-            function setTheme(theme) {
-                htmlTag.setAttribute('data-theme', theme);
-                localStorage.setItem('theme', theme);
-            }
-
-            // تطبيق الثيم المحفوظ
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            setTheme(savedTheme);
-
-            themeBtn.addEventListener('click', () => {
-                const current = htmlTag.getAttribute('data-theme');
-                setTheme(current === 'dark' ? 'light' : 'dark');
+            const btn = document.getElementById('themeToggle');
+            const html = document.getElementById('html-root');
+            html.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+            btn.addEventListener('click', () => {
+                const t = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', t);
+                localStorage.setItem('theme', t);
             });
         })();
-    </script>
 
-    <!-- Scroll Progress & Back to Top -->
-    <script>
+        // Contrast Toggle
+        document.getElementById('contrastToggle').addEventListener('click', function() {
+            const h = document.getElementById('html-root');
+            h.setAttribute('data-contrast', h.getAttribute('data-contrast') === 'high' ? '' : 'high');
+        });
+
+        // Reading Mode
+        document.getElementById('readingToggle').addEventListener('click', () => document.body.classList.toggle('reading-mode'));
+
+        // Scroll Progress + Back to Top + Navbar Shadow
         (function() {
-            const progressBar = document.getElementById('scrollProgress');
-            const backToTopBtn = document.getElementById('backToTop');
-
+            const progress = document.getElementById('scrollProgress');
+            const backBtn = document.getElementById('backToTop');
+            const nav = document.getElementById('mainNavbar');
             window.addEventListener('scroll', () => {
-                const scrollTop = window.scrollY;
-                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-                const progress = (scrollTop / docHeight) * 100;
-                progressBar.style.width = progress + '%';
-
-                if (scrollTop > 300) {
-                    backToTopBtn.style.display = 'flex';
-                } else {
-                    backToTopBtn.style.display = 'none';
-                }
+                const st = window.scrollY;
+                const dh = document.documentElement.scrollHeight - window.innerHeight;
+                progress.style.width = (st / dh) * 100 + '%';
+                backBtn.style.display = st > 300 ? 'flex' : 'none';
+                nav.classList.toggle('scrolled', st > 50);
             });
+            backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        })();
 
-            backToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Custom Cursor
+        (function() {
+            const cursor = document.getElementById('customCursor');
+            if (!cursor || window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                cursor.style.display = 'block';
+            });
+            document.querySelectorAll('a, button, .nav-icon, .filter-btn, .btn, .form-control, .dropdown-item, .carousel-control-prev, .carousel-control-next').forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
             });
         })();
+
+        // AOS
+        AOS.init({ duration: 700, once: true, offset: 80 });
+
+        // Particles
+        tsParticles.load("particles-js", {
+            fpsLimit: 60,
+            particles: { number: { value: 60, density: { enable: true, area: 800 } }, color: { value: "#2563eb" }, shape: { type: "circle" }, opacity: { value: 0.4, random: true }, size: { value: 2.5, random: true }, move: { enable: true, speed: 1, direction: "none", random: true } },
+            interactivity: { events: { onHover: { enable: true, mode: "repulse" } } }
+        });
+
+        // Counter
+        document.addEventListener('DOMContentLoaded', () => {
+            const counters = document.querySelectorAll('.counter');
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        const el = e.target;
+                        const target = +el.getAttribute('data-target');
+                        let c = 0;
+                        const inv = setInterval(() => { c += target / 40; if (c >= target) { el.textContent = target; clearInterval(inv); } else el.textContent = Math.ceil(c); }, 25);
+                        obs.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.5 });
+            counters.forEach(c => obs.observe(c));
+        });
+
+        // Project Filter
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const f = btn.getAttribute('data-filter');
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    document.querySelectorAll('.project-item').forEach(item => {
+                        const show = f === 'all' || item.getAttribute('data-category') === f;
+                        item.classList.toggle('hide', !show);
+                        item.style.display = show ? 'block' : 'none';
+                    });
+                    AOS.refresh();
+                });
+            });
+        });
     </script>
 
-    <!-- AOS Initialization -->
-    <script>
-        AOS.init({ duration: 800, once: true, offset: 100 });
-    </script>
-
-    <!-- JSON-LD Structured Data -->
+    <!-- JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Ali Aloufi",
       "url": "https://yourdomain.com",
-      "image": "images/pic01.jpg",
+      "image": "images/ali.jpg",
       "jobTitle": "Information Systems Student",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "King Faisal University"
-      },
       "sameAs": [
-        "https://www.linkedin.com/in/yourprofile",
-        "https://github.com/yourusername"
+        "https://www.instagram.com/ali.aloufi.5682",
+        "https://t.me/AliAloufi5682",
+        "https://www.tiktok.com/@ali.aloufi.5682",
+        "https://www.facebook.com/share/18sa8Fmtjm/",
+        "https://discord.gg/tbvufahq",
+        "https://github.com/AliAloufi2050"
       ]
     }
     </script>
-
 </body>
 </html>
