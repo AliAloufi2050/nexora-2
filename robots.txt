@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://alialoufi2050.github.io/nexora/sitemap.xml

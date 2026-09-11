@@ -3,29 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Ali Aloufi | Portfolio</title>
-    <meta name="description" content="Ali Aloufi - Information Systems student and automation enthusiast. Building smart workflows and digital solutions.">
-    <meta name="keywords" content="Ali Aloufi, portfolio, information systems, automation, web development, Saudi Arabia">
+    <title id="page-title">Nexora | Systems, Automation & Digital Solutions</title>
+    <meta name="description" content="Nexora Systems - Building smart workflows and digital solutions. By Ali Aloufi, Information Systems Undergraduate at King Faisal University.">
+    <meta name="keywords" content="Nexora, Nexora Systems, Ali Aloufi, automation, information systems, web development, Saudi Arabia">
     <meta name="author" content="Ali Aloufi">
-    <meta property="og:title" content="Ali Aloufi | Portfolio">
-    <meta property="og:description" content="Building smart workflows and digital solutions.">
-    <meta property="og:image" content="images/ali.jpg">
+    <meta property="og:title" content="Nexora | Systems, Automation & Digital Solutions">
+    <meta property="og:description" content="Systems, Automation & Digital Solutions by Ali Aloufi.">
+    <meta property="og:image" content="images/avatar.png">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/png" href="images/favicon.png">
 
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- AOS Library -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-    <!-- Typed.js -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <!-- tsParticles -->
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
 
     <style>
@@ -45,7 +39,6 @@
             --blur: blur(20px);
             --nav-height: 65px;
         }
-
         [data-theme="dark"] {
             --bg-glass: rgba(15, 23, 42, 0.35);
             --bg-glass-hover: rgba(15, 23, 42, 0.55);
@@ -59,7 +52,6 @@
             --secondary-color: #60a5fa;
             --accent-color: #fbbf24;
         }
-
         [data-contrast="high"] {
             --primary-color: #000000;
             --secondary-color: #000000;
@@ -90,7 +82,20 @@
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
 
-        /* نخفي المؤشر الافتراضي فقط على أجهزة الكمبيوتر */
+        /* شعار Nexora بخط مستقبلي */
+        .nexora-brand {
+            font-family: 'Orbitron', 'Cairo', sans-serif !important;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .nexora-brand-accent {
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         @media (hover: hover) and (pointer: fine) {
             body { cursor: none; }
             .custom-cursor { display: block; }
@@ -98,52 +103,24 @@
         @media (hover: none), (pointer: coarse) {
             .custom-cursor { display: none !important; }
         }
-
         .custom-cursor {
-            position: fixed;
-            width: 20px; height: 20px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            pointer-events: none;
-            z-index: 99999;
+            position: fixed; width: 20px; height: 20px; border-radius: 50%;
+            background: var(--primary-color); pointer-events: none; z-index: 99999;
             transition: transform 0.15s ease, background 0.3s ease;
-            transform: translate(-50%, -50%);
-            mix-blend-mode: difference;
-            display: none;
+            transform: translate(-50%, -50%); mix-blend-mode: difference; display: none;
         }
-        .custom-cursor.hovered {
-            transform: translate(-50%, -50%) scale(2.5);
-            background: var(--accent-color);
-        }
+        .custom-cursor.hovered { transform: translate(-50%, -50%) scale(2.5); background: var(--accent-color); }
 
         .aurora-bg {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: -1;
-            overflow: hidden;
-            pointer-events: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            overflow: hidden; pointer-events: none;
         }
-        .aurora-bg::before,
-        .aurora-bg::after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.5;
-            animation: auroraFloat 15s ease-in-out infinite alternate;
+        .aurora-bg::before, .aurora-bg::after {
+            content: ''; position: absolute; border-radius: 50%; filter: blur(80px);
+            opacity: 0.5; animation: auroraFloat 15s ease-in-out infinite alternate;
         }
-        .aurora-bg::before {
-            width: 500px; height: 500px;
-            background: var(--primary-color);
-            top: -10%; left: -10%;
-        }
-        .aurora-bg::after {
-            width: 400px; height: 400px;
-            background: var(--accent-color);
-            bottom: -10%; right: -5%;
-            animation-delay: -7s;
-        }
+        .aurora-bg::before { width: 500px; height: 500px; background: var(--primary-color); top: -10%; left: -10%; }
+        .aurora-bg::after { width: 400px; height: 400px; background: var(--accent-color); bottom: -10%; right: -5%; animation-delay: -7s; }
         @keyframes auroraFloat {
             0% { transform: translate(0, 0) scale(1); }
             50% { transform: translate(60px, 40px) scale(1.2); }
@@ -151,297 +128,120 @@
         }
 
         .glass {
-            background: var(--bg-glass);
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
-            border: 1px solid var(--bg-glass-border);
-            border-radius: 20px;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
+            background: var(--bg-glass); backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur); border: 1px solid var(--bg-glass-border);
+            border-radius: 20px; box-shadow: var(--shadow-md); transition: var(--transition);
         }
-        .glass:hover {
-            background: var(--bg-glass-hover);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-        }
+        .glass:hover { background: var(--bg-glass-hover); box-shadow: 0 15px 40px rgba(0,0,0,0.25); }
 
-        /* الشريط العلوي */
         .navbar {
-            background: var(--bg-glass);
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
-            border: 1px solid var(--bg-glass-border);
-            border-radius: 50px;
-            box-shadow: var(--shadow-md);
-            padding: 0.5rem 1rem;
-            margin: 15px auto 0;
-            max-width: 1100px;
-            width: calc(100% - 30px);
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1030;
-            height: var(--nav-height);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: var(--transition);
+            background: var(--bg-glass); backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
+            border: 1px solid var(--bg-glass-border); border-radius: 50px; box-shadow: var(--shadow-md);
+            padding: 0.5rem 1rem; margin: 15px auto 0; max-width: 1200px; width: calc(100% - 30px);
+            position: fixed; top: 0; left: 50%; transform: translateX(-50%); z-index: 1030;
+            height: var(--nav-height); display: flex; align-items: center; justify-content: space-between; transition: var(--transition);
         }
-        [dir="rtl"] .navbar {
-            left: 50%;
-            transform: translateX(50%);
-        }
-        .navbar.scrolled {
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            background: var(--bg-glass-hover);
-            margin-top: 8px;
-            height: 55px;
-        }
-
-        .navbar-brand {
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: var(--primary-color) !important;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .navbar-brand i { font-size: 1.5rem; }
-
-        .nav-icons {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
+        [dir="rtl"] .navbar { left: 50%; transform: translateX(-50%); }
+        .navbar.scrolled { box-shadow: 0 15px 40px rgba(0,0,0,0.3); background: var(--bg-glass-hover); margin-top: 8px; height: 55px; }
+        .navbar-brand { font-size: 1.2rem; color: var(--primary-color) !important; white-space: nowrap; display: flex; align-items: center; gap: 0.5rem; cursor: pointer; }
+        .navbar-brand i { font-size: 1.5rem; color: var(--accent-color); }
+        .nav-icons { display: flex; align-items: center; gap: 0.3rem; }
         .nav-icon {
-            position: relative;
-            background: transparent;
-            border: none;
-            color: var(--text-dark);
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 1.2rem;
+            position: relative; background: transparent; border: none; color: var(--text-dark);
+            width: 42px; height: 42px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            cursor: pointer; transition: var(--transition); font-size: 1.2rem;
         }
-        .nav-icon:hover {
-            background: var(--bg-glass-hover);
-            color: var(--primary-color);
-            transform: scale(1.1);
-        }
+        .nav-icon:hover { background: var(--bg-glass-hover); color: var(--primary-color); transform: scale(1.1); }
         .nav-icon::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--bg-glass);
-            backdrop-filter: var(--blur);
-            color: var(--text-dark);
-            padding: 0.2rem 0.6rem;
-            border-radius: 10px;
-            font-size: 0.7rem;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: var(--transition);
-            border: 1px solid var(--bg-glass-border);
+            content: attr(data-tooltip); position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%);
+            background: var(--bg-glass); backdrop-filter: var(--blur); color: var(--text-dark); padding: 0.2rem 0.6rem;
+            border-radius: 10px; font-size: 0.7rem; white-space: nowrap; opacity: 0; pointer-events: none;
+            transition: var(--transition); border: 1px solid var(--bg-glass-border);
         }
-        .nav-icon:hover::after {
-            opacity: 1;
-            bottom: -25px;
-        }
-
+        .nav-icon:hover::after { opacity: 1; bottom: -25px; }
         .dropdown-toggle::after { display: none; }
         .dropdown-menu {
-            background: var(--bg-glass);
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
-            border: 1px solid var(--bg-glass-border);
-            border-radius: 15px;
-            box-shadow: var(--shadow-md);
-            padding: 0.5rem;
-            min-width: 200px;
+            background: var(--bg-glass); backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
+            border: 1px solid var(--bg-glass-border); border-radius: 15px; box-shadow: var(--shadow-md);
+            padding: 0.5rem; min-width: 200px;
         }
-        .dropdown-menu .dropdown-item {
-            border-radius: 10px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            padding: 0.5rem 1rem;
-            color: var(--text-dark);
-            transition: var(--transition);
-        }
-        .dropdown-menu .dropdown-item:hover {
-            background: var(--bg-glass-hover);
-            color: var(--primary-color);
-        }
-
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
+        .dropdown-menu .dropdown-item { border-radius: 10px; font-weight: 500; font-size: 0.9rem; padding: 0.5rem 1rem; color: var(--text-dark); transition: var(--transition); }
+        .dropdown-menu .dropdown-item:hover { background: var(--bg-glass-hover); color: var(--primary-color); }
+        .nav-controls { display: flex; align-items: center; gap: 5px; }
         .icon-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-dark);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 1.1rem;
+            background: transparent; border: none; color: var(--text-dark); width: 36px; height: 36px;
+            border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer;
+            transition: var(--transition); font-size: 1.1rem;
         }
-        .icon-btn:hover {
-            background: var(--bg-glass-hover);
-            color: var(--primary-color);
-            transform: scale(1.05);
-        }
+        .icon-btn:hover { background: var(--bg-glass-hover); color: var(--primary-color); transform: scale(1.05); }
         .lang-btn-mini {
-            background: transparent;
-            border: 1px solid var(--bg-glass-border);
-            color: var(--text-dark);
-            padding: 0.25rem 0.7rem;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: var(--transition);
-            white-space: nowrap;
+            background: transparent; border: 1px solid var(--bg-glass-border); color: var(--text-dark);
+            padding: 0.25rem 0.7rem; border-radius: 20px; font-weight: 600; font-size: 0.8rem; cursor: pointer;
+            transition: var(--transition); white-space: nowrap;
         }
-        .lang-btn-mini:hover {
-            background: var(--primary-color);
-            color: #fff;
-            border-color: var(--primary-color);
-        }
+        .lang-btn-mini:hover { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
 
-        /* الأزرار */
+        .customizer-panel, .admin-panel {
+            position: fixed; top: 0; right: -400px; width: 360px; height: 100vh;
+            background: var(--bg-glass); backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
+            border-left: 1px solid var(--bg-glass-border); box-shadow: var(--shadow-md); z-index: 2000;
+            transition: right 0.3s ease; padding: 1rem; overflow-y: auto;
+        }
+        .customizer-panel.open, .admin-panel.open { right: 0; }
+        [dir="rtl"] .customizer-panel, [dir="rtl"] .admin-panel { right: auto; left: -400px; border-left: none; border-right: 1px solid var(--bg-glass-border); }
+        [dir="rtl"] .customizer-panel.open, [dir="rtl"] .admin-panel.open { left: 0; }
+        .customizer-header, .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+
         .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            color: #fff;
-            padding: 0.6rem 1.5rem;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: var(--transition);
+            background-color: var(--primary-color); border-color: var(--primary-color); color: #fff;
+            padding: 0.6rem 1.5rem; border-radius: 30px; font-weight: 600; transition: var(--transition);
         }
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        .btn-outline-primary {
-            color: var(--primary-color);
-            border-color: var(--primary-color);
-            border-radius: 30px;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        .btn-outline-primary:hover {
-            background-color: var(--primary-color);
-            color: #fff;
-            transform: translateY(-2px);
-        }
+        .btn-primary:hover { background-color: var(--secondary-color); border-color: var(--secondary-color); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+        .btn-outline-primary { color: var(--primary-color); border-color: var(--primary-color); border-radius: 30px; font-weight: 600; transition: var(--transition); }
+        .btn-outline-primary:hover { background-color: var(--primary-color); color: #fff; transform: translateY(-2px); }
 
         .section-padding { padding: 60px 0; }
         .section-title {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 0.75rem;
-            position: relative;
-            display: inline-block;
+            font-size: 2rem; font-weight: 800; margin-bottom: 0.75rem; position: relative; display: inline-block;
         }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent-color);
-            border-radius: 2px;
-        }
+        .section-title::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); width: 50px; height: 3px; background-color: var(--accent-color); border-radius: 2px; }
 
         .hero {
-            padding: 40px 0 30px;
-            position: relative;
-            min-height: calc(100vh - var(--nav-height) - 30px);
-            display: flex;
-            align-items: center;
+            padding: 40px 0 30px; position: relative; min-height: calc(100vh - var(--nav-height) - 30px);
+            display: flex; align-items: center;
         }
         #particles-js { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
         .hero .container { position: relative; z-index: 1; }
-        .hero h1 { font-size: 3.2rem; font-weight: 800; color: var(--primary-color); margin-bottom: 0.5rem; }
+        .hero h1 { font-size: 4rem; color: var(--primary-color); margin-bottom: 0.5rem; }
         .hero p.lead { font-size: 1.2rem; color: var(--text-muted); }
         .hero-img-wrapper {
-            display: inline-block;
-            position: relative;
-            padding: 10px;
-            border-radius: 50%;
-            background: var(--bg-glass);
-            backdrop-filter: var(--blur);
-            border: 1px solid var(--bg-glass-border);
-            box-shadow: var(--shadow-md);
+            display: inline-block; position: relative; padding: 12px; border-radius: 50%;
+            background: var(--bg-glass); backdrop-filter: var(--blur); border: 2px solid var(--bg-glass-border);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.4), 0 0 80px rgba(251, 191, 36, 0.15);
+            animation: glowPulse 4s ease-in-out infinite;
         }
-        .hero-img {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            object-fit: cover;
-            display: block;
-            transition: var(--transition);
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.4), 0 0 80px rgba(251, 191, 36, 0.15); }
+            50% { box-shadow: 0 0 60px rgba(59, 130, 246, 0.6), 0 0 100px rgba(251, 191, 36, 0.25); }
         }
+        .hero-img { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; display: block; transition: var(--transition); }
         .hero-img:hover { transform: scale(1.03); }
         .hero-buttons { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.5rem; }
+        .brand-subtitle { font-size: 1rem; color: var(--text-muted); }
+        .brand-byline { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem; }
 
         .project-card, .cert-card, .service-card, .testimonial-card, .blog-card {
-            background: var(--bg-glass);
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
-            border: 1px solid var(--bg-glass-border);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            height: 100%;
+            background: var(--bg-glass); backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
+            border: 1px solid var(--bg-glass-border); border-radius: 20px; overflow: hidden;
+            box-shadow: var(--shadow-sm); transition: var(--transition); height: 100%;
         }
-        .project-card:hover, .cert-card:hover, .service-card:hover, .testimonial-card:hover, .blog-card:hover {
-            background: var(--bg-glass-hover);
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-md);
-        }
+        .project-card:hover, .cert-card:hover, .service-card:hover, .testimonial-card:hover, .blog-card:hover { background: var(--bg-glass-hover); transform: translateY(-6px); box-shadow: var(--shadow-md); }
         .project-thumb, .blog-thumb { height: 180px; overflow: hidden; }
         .blog-thumb { height: 160px; }
-        .project-thumb img, .blog-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+        .project-thumb img, .blog-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .project-card:hover .project-thumb img, .blog-card:hover .blog-thumb img { transform: scale(1.04); }
         .project-body, .blog-body { padding: 1.3rem; }
-        .tech-tag {
-            display: inline-block;
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary-color);
-            padding: 0.2rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            margin: 0.12rem;
-            border: 1px solid rgba(37, 99, 235, 0.2);
-        }
+        .tech-tag { display: inline-block; background: rgba(37,99,235,0.1); color: var(--primary-color); padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.78rem; font-weight: 600; margin: 0.12rem; border: 1px solid rgba(37,99,235,0.2); }
 
         .skill-item { margin-bottom: 1.3rem; }
         .skill-header { display: flex; justify-content: space-between; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.3rem; }
@@ -467,7 +267,7 @@
         .project-item.hide { display: none; }
 
         .contact-form .form-control { border-radius: 12px; border: 1px solid var(--bg-glass-border); padding: 0.7rem 1rem; background: var(--bg-glass); backdrop-filter: var(--blur); color: var(--text-dark); font-size: 0.9rem; }
-        .contact-form .form-control:focus { border-color: var(--secondary-color); box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.15); }
+        .contact-form .form-control:focus { border-color: var(--secondary-color); box-shadow: 0 0 0 0.2rem rgba(37,99,235,0.15); }
 
         .share-buttons a { display: inline-flex; justify-content: center; align-items: center; width: 36px; height: 36px; border-radius: 50%; color: #fff; margin: 0 4px; transition: var(--transition); text-decoration: none; font-size: 0.9rem; }
         .share-buttons a:hover { transform: scale(1.1); }
@@ -494,9 +294,7 @@
         body.reading-mode .share-buttons,
         body.reading-mode #backToTop,
         body.reading-mode #particles-js,
-        body.reading-mode .custom-cursor {
-            display: none !important;
-        }
+        body.reading-mode .custom-cursor { display: none !important; }
 
         [dir="rtl"] .hero-buttons { flex-direction: row-reverse; }
         [dir="rtl"] .project-links { flex-direction: row-reverse; }
@@ -505,21 +303,39 @@
         [dir="rtl"] .nav-controls { margin-left: 0; margin-right: auto; }
         [dir="rtl"] .dropdown-menu { text-align: right; }
 
+        .stack-icon { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 0.5rem; }
+        .stack-item { padding: 1rem; border-radius: 15px; background: var(--bg-glass); border: 1px solid var(--bg-glass-border); backdrop-filter: var(--blur); transition: var(--transition); text-align: center; }
+        .stack-item:hover { background: var(--bg-glass-hover); transform: translateY(-5px); }
+        .parallax-img { transition: transform 0.2s ease-out; }
+        #quickInfoModal .modal-content { background: var(--bg-glass); backdrop-filter: var(--blur); border: 1px solid var(--bg-glass-border); border-radius: 20px; }
+
+        /* Services section */
+        .system-card {
+            background: var(--bg-glass); backdrop-filter: var(--blur); border: 1px solid var(--bg-glass-border);
+            border-radius: 20px; padding: 1.5rem; transition: var(--transition); height: 100%;
+        }
+        .system-card:hover { background: var(--bg-glass-hover); transform: translateY(-6px); box-shadow: var(--shadow-md); }
+        .system-card .sys-icon { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 0.75rem; }
+        .system-card h5 { color: var(--primary-color); font-weight: 700; }
+        .system-card ul { padding-left: 1rem; }
+        .system-card ul li { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.3rem; }
+
         @media (max-width: 992px) {
             .navbar { border-radius: 25px; padding: 0.4rem 1rem; height: 50px; flex-wrap: nowrap; }
             .nav-icons { gap: 0.1rem; }
             .nav-icon { width: 35px; height: 35px; font-size: 1rem; }
             .nav-icon::after { display: none; }
-            .navbar-brand { font-size: 1rem; }
+            .navbar-brand { font-size: 0.95rem; }
             .icon-btn { width: 32px; height: 32px; font-size: 0.95rem; }
             .lang-btn-mini { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
+            .hero h1 { font-size: 3rem; }
         }
         @media (max-width: 768px) {
             body { padding-top: 60px; }
             .hero { padding: 30px 0 20px; }
             .hero h1 { font-size: 2.4rem; }
             .hero-img { width: 150px; height: 150px; }
-            .hero-img-wrapper { padding: 5px; }
+            .hero-img-wrapper { padding: 8px; }
             .section-padding { padding: 50px 0; }
             .section-title { font-size: 1.7rem; }
             .stat-number { font-size: 1.8rem; }
@@ -539,40 +355,175 @@
 
     <!-- الشريط العلوي -->
     <nav class="navbar" id="mainNavbar">
-        <a class="navbar-brand" href="#home">
-            <i class="bi bi-code-slash"></i>
-            <span data-en="Ali Aloufi" data-ar="علي العوفي">Ali Aloufi</span>
+        <a class="navbar-brand" href="#" data-bs-toggle="modal" data-bs-target="#quickInfoModal">
+            <i class="bi bi-hexagon-fill"></i>
+            <span class="nexora-brand"><span class="nexora-brand-accent">Nexora</span></span>
         </a>
-
         <div class="nav-icons">
             <button class="nav-icon" data-tooltip="Home" onclick="location.href='#home'"><i class="bi bi-house"></i><span class="d-none" data-en="Home" data-ar="الرئيسية">Home</span></button>
-            <button class="nav-icon" data-tooltip="About" onclick="location.href='#about'"><i class="bi bi-person"></i><span class="d-none" data-en="About" data-ar="عني">About</span></button>
-            <button class="nav-icon" data-tooltip="Portfolio" onclick="location.href='#portfolio'"><i class="bi bi-grid"></i><span class="d-none" data-en="Portfolio" data-ar="أعمالي">Portfolio</span></button>
+            <button class="nav-icon" data-tooltip="About" onclick="location.href='#about'"><i class="bi bi-person-badge"></i><span class="d-none" data-en="About" data-ar="عن Nexora">About</span></button>
+            <button class="nav-icon" data-tooltip="Systems" onclick="location.href='#systems'"><i class="bi bi-cpu"></i><span class="d-none" data-en="Systems" data-ar="الأنظمة">Systems</span></button>
+            <button class="nav-icon" data-tooltip="Portfolio" onclick="location.href='#portfolio'"><i class="bi bi-grid"></i><span class="d-none" data-en="Portfolio" data-ar="المشاريع">Portfolio</span></button>
+            <button class="nav-icon" data-tooltip="Insights" onclick="location.href='#insights'"><i class="bi bi-lightbulb"></i><span class="d-none" data-en="Insights" data-ar="الرؤى">Insights</span></button>
             <button class="nav-icon" data-tooltip="Contact" onclick="location.href='#contact'"><i class="bi bi-envelope"></i><span class="d-none" data-en="Contact" data-ar="تواصل">Contact</span></button>
-
             <div class="dropdown">
                 <button class="nav-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-tooltip="More"><i class="bi bi-three-dots"></i></button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#skills" data-en="Skills" data-ar="المهارات">Skills</a></li>
-                    <li><a class="dropdown-item" href="#experience" data-en="Experience" data-ar="الخبرات">Experience</a></li>
-                    <li><a class="dropdown-item" href="#services" data-en="Services" data-ar="الخدمات">Services</a></li>
+                    <li><a class="dropdown-item" href="#stack" data-en="My Stack" data-ar="أدواتي المفضلة">My Stack</a></li>
+                    <li><a class="dropdown-item" href="#experience" data-en="Journey" data-ar="المسيرة">Journey</a></li>
                     <li><a class="dropdown-item" href="#certifications" data-en="Certifications" data-ar="الشهادات">Certifications</a></li>
                     <li><a class="dropdown-item" href="#testimonials" data-en="Testimonials" data-ar="التوصيات">Testimonials</a></li>
-                    <li><a class="dropdown-item" href="#blog" data-en="Blog" data-ar="المدونة">Blog</a></li>
                     <li><a class="dropdown-item" href="#faq" data-en="FAQ" data-ar="الأسئلة">FAQ</a></li>
                 </ul>
             </div>
         </div>
-
         <div class="nav-controls">
             <button id="themeToggle" class="icon-btn" aria-label="Toggle dark mode"><i class="bi bi-moon-stars"></i></button>
             <button id="contrastToggle" class="icon-btn" aria-label="Toggle high contrast"><i class="bi bi-eye"></i></button>
             <button id="readingToggle" class="icon-btn" aria-label="Toggle reading mode"><i class="bi bi-book"></i></button>
+            <button id="customizerToggle" class="icon-btn" aria-label="Open customizer"><i class="bi bi-sliders"></i></button>
+            <button id="adminToggle" class="icon-btn" aria-label="Admin Panel"><i class="bi bi-shield-lock"></i></button>
             <button id="langToggle" class="lang-btn-mini" aria-label="Toggle language">
                 <span data-lang-en="العربية" data-lang-ar="English">العربية</span>
             </button>
         </div>
     </nav>
+
+    <!-- لوحة تخصيص المستخدم -->
+    <div id="customizerPanel" class="customizer-panel">
+        <div class="customizer-header">
+            <h6 data-en="Customize" data-ar="تخصيص">Customize</h6>
+            <button id="customizerClose" class="btn-close" aria-label="Close"></button>
+        </div>
+        <div class="customizer-body">
+            <label class="form-label" data-en="Primary Color" data-ar="اللون الأساسي">Primary Color</label>
+            <input type="color" id="primaryColorPicker" class="form-control form-control-color mb-3" value="#3b82f6">
+            <label class="form-label" data-en="Accent Color" data-ar="اللون المميز">Accent Color</label>
+            <input type="color" id="accentColorPicker" class="form-control form-control-color mb-3" value="#fbbf24">
+            <label class="form-label" data-en="Font Size" data-ar="حجم الخط">Font Size</label>
+            <select id="fontSizeSelect" class="form-select mb-3">
+                <option value="0.9rem" data-en="Small" data-ar="صغير">Small</option>
+                <option value="1rem" selected data-en="Normal" data-ar="عادي">Normal</option>
+                <option value="1.1rem" data-en="Large" data-ar="كبير">Large</option>
+            </select>
+            <label class="form-label" data-en="Background Effect" data-ar="تأثير الخلفية">Background Effect</label>
+            <select id="bgEffectSelect" class="form-select mb-3">
+                <option value="aurora" selected data-en="Aurora" data-ar="شفق">Aurora</option>
+                <option value="plain" data-en="Plain" data-ar="عادي">Plain</option>
+                <option value="particles" data-en="Particles" data-ar="جزيئات">Particles</option>
+            </select>
+            <p class="small text-muted" data-en="Changes are temporary and will reset on page refresh." data-ar="التغييرات مؤقتة وستعود للوضع الافتراضي عند تحديث الصفحة.">Changes are temporary and will reset on page refresh.</p>
+        </div>
+    </div>
+
+    <!-- لوحة الأدمن -->
+    <div id="adminPanel" class="admin-panel">
+        <div class="admin-header">
+            <h6><i class="bi bi-shield-lock me-1"></i> <span data-en="Nexora Admin" data-ar="لوحة أدمن Nexora">Nexora Admin</span></h6>
+            <button id="adminClose" class="btn-close" aria-label="Close"></button>
+        </div>
+        <div class="admin-body">
+            <ul class="nav nav-pills mb-3" style="flex-wrap:nowrap; overflow-x:auto; gap: 0.2rem;">
+                <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabPersonal">Personal</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabProjects">Projects</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabCerts">Certs</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabBlog">Insights</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabSocial">Social</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabSettings">Settings</button></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="tabPersonal">
+                    <label class="form-label">Brand Name</label><input type="text" class="form-control mb-2" id="adminName">
+                    <label class="form-label">Tagline / Title</label><input type="text" class="form-control mb-2" id="adminTitle">
+                    <label class="form-label">Avatar Image URL</label><input type="text" class="form-control mb-2" id="adminHeroImage">
+                    <label class="form-label">About Paragraph 1</label><textarea class="form-control mb-2" id="adminAbout1" rows="2"></textarea>
+                    <label class="form-label">About Paragraph 2</label><textarea class="form-control mb-3" id="adminAbout2" rows="2"></textarea>
+                </div>
+                <div class="tab-pane fade" id="tabProjects">
+                    <div id="projectList" class="mb-3"></div>
+                    <label class="form-label">Title</label><input type="text" class="form-control mb-2" id="pTitle">
+                    <label class="form-label">Description</label><textarea class="form-control mb-2" id="pDesc"></textarea>
+                    <label class="form-label">Image URL</label><input type="text" class="form-control mb-2" id="pImage">
+                    <label class="form-label">Tech (comma)</label><input type="text" class="form-control mb-2" id="pTech">
+                    <label class="form-label">Category</label><select class="form-select mb-3" id="pCategory">
+                        <option value="automation">Automation</option><option value="web">Web</option><option value="database">Database</option>
+                    </select>
+                    <button class="btn btn-sm btn-primary" id="addProject">Add Project</button>
+                </div>
+                <div class="tab-pane fade" id="tabCerts">
+                    <div id="certList" class="mb-3"></div>
+                    <label class="form-label">Title</label><input type="text" class="form-control mb-2" id="cTitle">
+                    <label class="form-label">Issuer</label><input type="text" class="form-control mb-2" id="cIssuer">
+                    <label class="form-label">Year</label><input type="text" class="form-control mb-3" id="cYear">
+                    <button class="btn btn-sm btn-primary" id="addCert">Add Certificate</button>
+                </div>
+                <div class="tab-pane fade" id="tabBlog">
+                    <div id="blogList" class="mb-3"></div>
+                    <label class="form-label">Title</label><input type="text" class="form-control mb-2" id="bTitle">
+                    <label class="form-label">Image URL</label><input type="text" class="form-control mb-2" id="bImage">
+                    <button class="btn btn-sm btn-primary" id="addBlog">Add Insight</button>
+                </div>
+                <div class="tab-pane fade" id="tabSocial">
+                    <label>Instagram</label><input type="text" class="form-control mb-2" id="adminInsta">
+                    <label>Telegram</label><input type="text" class="form-control mb-2" id="adminTelegram">
+                    <label>TikTok</label><input type="text" class="form-control mb-2" id="adminTiktok">
+                    <label>Facebook</label><input type="text" class="form-control mb-2" id="adminFacebook">
+                    <label>Discord</label><input type="text" class="form-control mb-2" id="adminDiscord">
+                    <label>GitHub</label><input type="text" class="form-control mb-3" id="adminGithub">
+                </div>
+                <div class="tab-pane fade" id="tabSettings">
+                    <label class="form-label">Username</label><input type="text" class="form-control mb-2" id="adminUsername" value="admin">
+                    <label class="form-label">Password</label><input type="password" class="form-control mb-3" id="adminPassword" value="admin123">
+                    <button class="btn btn-sm btn-outline-danger w-100 mb-2" id="adminReset">Reset All Data</button>
+                </div>
+            </div>
+            <button class="btn btn-primary btn-sm w-100 mt-3" id="adminSaveAll">Save All Changes</button>
+        </div>
+    </div>
+
+    <!-- نافذة تسجيل دخول الأدمن -->
+    <div class="modal fade" id="adminLoginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title"><i class="bi bi-shield-lock me-1"></i> Nexora Admin Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-control mb-2" id="loginUsername" placeholder="admin">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control mb-3" id="loginPassword" placeholder="Password">
+                    <button class="btn btn-primary w-100" id="loginSubmit">Login</button>
+                    <div id="loginError" class="text-danger small mt-2 d-none">Invalid credentials</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة نبذة سريعة -->
+    <div class="modal fade" id="quickInfoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background: var(--bg-glass); backdrop-filter: var(--blur); border: 1px solid var(--bg-glass-border); border-radius: 20px;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title nexora-brand">Nexora</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong data-en="Brand:" data-ar="الهوية:">Brand:</strong> <span id="quickName">Nexora</span></p>
+                    <p><strong data-en="Founder:" data-ar="المؤسس:">Founder:</strong> Ali Aloufi</p>
+                    <p><strong data-en="Specialty:" data-ar="التخصص:">Specialty:</strong> <span id="quickSpecialty">Systems, Automation & Digital Solutions</span></p>
+                    <p><strong data-en="Email:" data-ar="البريد:">Email:</strong> your.email@example.com</p>
+                    <p><strong data-en="Location:" data-ar="الموقع:">Location:</strong> <span data-en="Saudi Arabia" data-ar="المملكة العربية السعودية">Saudi Arabia</span></p>
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="assets/cv.pdf" target="_blank" class="btn btn-sm btn-primary" data-en="View CV" data-ar="عرض السيرة">View CV</a>
+                        <a href="#contact" class="btn btn-sm btn-outline-primary" data-en="Contact" data-ar="تواصل">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero -->
     <section id="home" class="hero">
@@ -580,28 +531,22 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 data-en="Ali Aloufi" data-ar="علي العوفي">Ali Aloufi</h1>
-                    <p class="lead">
-                        <span id="typed-text" data-en="Information Systems Student & Automation Enthusiast"
-                              data-ar="طالب نظم معلومات ومهتم بأتمتة العمليات الرقمية">
-                            Information Systems Student & Automation Enthusiast
-                        </span>
+                    <h1 class="nexora-brand" id="heroName">
+                        <span class="nexora-brand-accent" data-en="Nexora" data-ar="نيكسورا">Nexora</span>
+                    </h1>
+                    <p class="lead brand-subtitle">
+                        <span id="typed-text" data-en="Systems, Automation & Digital Solutions" data-ar="أنظمة، أتمتة وحلول رقمية">Systems, Automation & Digital Solutions</span>
                     </p>
-                    <p class="text-muted">
-                        <span id="greeting" data-en="Welcome! I build smart workflows and digital solutions." data-ar="مرحباً! أبني مسارات عمل ذكية وحلولاً رقمية.">
-                            Welcome! I build smart workflows and digital solutions.
-                        </span>
-                    </p>
+                    <p class="brand-byline" data-en="By Ali Aloufi — Information Systems Undergraduate at King Faisal University" data-ar="من علي العوفي — طالب نظم معلومات في جامعة الملك فيصل">By Ali Aloufi — Information Systems Undergraduate at King Faisal University</p>
+                    <p class="text-muted small mt-3" id="greeting" data-en="Building smart workflows and digital ecosystems." data-ar="أبني مسارات عمل ذكية ومنظومات رقمية متكاملة.">Building smart workflows and digital ecosystems.</p>
                     <div class="hero-buttons">
-                        <a href="#portfolio" class="btn btn-primary" data-en="View My Work" data-ar="شاهد أعمالي">View My Work</a>
-                        <a href="assets/cv.pdf" download class="btn btn-outline-primary" data-en="Download CV" data-ar="تحميل السيرة الذاتية">Download CV</a>
+                        <a href="#portfolio" class="btn btn-primary" data-en="Explore Ecosystem" data-ar="استكشف المنظومة">Explore Ecosystem</a>
+                        <a href="#contact" class="btn btn-outline-primary" data-en="Request Consultation" data-ar="طلب استشارة">Request Consultation</a>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center">
                     <div class="hero-img-wrapper">
-                        <span class="image">
-                            <img src="images/ali.jpg" alt="Ali Aloufi" class="hero-img" loading="lazy" />
-                        </span>
+                        <img src="images/avatar.png" alt="Nexora - Ali Aloufi" class="hero-img" id="heroImage" loading="lazy" />
                     </div>
                 </div>
             </div>
@@ -611,23 +556,15 @@
     <!-- About -->
     <section id="about" class="section-padding" data-aos="fade-up">
         <div class="container">
-            <div class="text-center mb-4">
-                <h2 class="section-title" data-en="About Me" data-ar="نبذة عني">About Me</h2>
-            </div>
+            <div class="text-center mb-4"><h2 class="section-title" data-en="About Nexora" data-ar="عن Nexora">About Nexora</h2></div>
             <div class="row align-items-center g-4">
                 <div class="col-lg-5 text-center" data-aos="fade-right">
-                    <img src="images/pic02.jpg" alt="About Ali" class="img-fluid rounded-4" loading="lazy" style="max-width: 350px; border-radius: 20px; box-shadow: var(--shadow-md);">
+                    <img src="images/pic02.jpg" alt="Nexora" class="img-fluid rounded-4 parallax-img" loading="lazy" style="max-width: 350px; border-radius: 20px; box-shadow: var(--shadow-md);" id="parallaxImage">
                 </div>
                 <div class="col-lg-7" data-aos="fade-left">
-                    <h4 data-en="Welcome to my digital space" data-ar="أهلاً بك في مساحتي الرقمية">Welcome to my digital space</h4>
-                    <p data-en="I am an Information Systems student at King Faisal University, passionate about bridging business and technology through process automation and modern web solutions."
-                       data-ar="أنا طالب نظم معلومات في جامعة الملك فيصل، شغوف بربط الأعمال بالتكنولوجيا من خلال أتمتة العمليات والحلول التقنية الحديثة.">
-                        I am an Information Systems student at King Faisal University, passionate about bridging business and technology through process automation and modern web solutions.
-                    </p>
-                    <p data-en="My goal is to eliminate repetitive tasks using no-code/low-code tools and build clean, efficient systems that save time and boost productivity."
-                       data-ar="هدفي هو التخلص من المهام المتكررة باستخدام أدوات الأتمتة وبناء أنظمة نظيفة وفعالة توفر الوقت وتزيد الإنتاجية.">
-                        My goal is to eliminate repetitive tasks using no-code/low-code tools and build clean, efficient systems that save time and boost productivity.
-                    </p>
+                    <h4 data-en="A digital ecosystem for the future" data-ar="منظومة رقمية للمستقبل">A digital ecosystem for the future</h4>
+                    <p id="aboutText1" data-en="Nexora is a personal systems studio founded by Ali Aloufi, an Information Systems student at King Faisal University. We bridge business and technology through process automation, full-stack development, database engineering, and cloud computing pathways." data-ar="Nexora هي منظومة أنظمة شخصية أسسها علي العوفي، طالب نظم معلومات في جامعة الملك فيصل. نربط الأعمال بالتكنولوجيا من خلال أتمتة العمليات، تطوير الويب المتكامل، هندسة قواعد البيانات، ومسارات الحوسبة السحابية.">Nexora is a personal systems studio founded by Ali Aloufi, an Information Systems student at King Faisal University. We bridge business and technology through process automation, full-stack development, database engineering, and cloud computing pathways.</p>
+                    <p id="aboutText2" data-en="Our goal is to eliminate repetitive tasks, engineer efficient workflows, and build clean digital systems that save time and boost productivity for organizations of any size." data-ar="هدفنا هو التخلص من المهام المتكررة، وهندسة مسارات عمل فعّالة، وبناء أنظمة رقمية نظيفة توفر الوقت وترفع الإنتاجية للمؤسسات بمختلف أحجامها.">Our goal is to eliminate repetitive tasks, engineer efficient workflows, and build clean digital systems that save time and boost productivity for organizations of any size.</p>
                     <div class="d-flex flex-wrap gap-3 mt-3">
                         <div><i class="bi bi-mortarboard-fill text-primary me-2"></i><span data-en="King Faisal University" data-ar="جامعة الملك فيصل">King Faisal University</span></div>
                         <div><i class="bi bi-geo-alt-fill text-primary me-2"></i><span data-en="Saudi Arabia" data-ar="المملكة العربية السعودية">Saudi Arabia</span></div>
@@ -640,36 +577,93 @@
     <!-- Skills -->
     <section id="skills" class="section-padding" data-aos="fade-up">
         <div class="container">
-            <div class="text-center mb-4">
-                <h2 class="section-title" data-en="Skills" data-ar="المهارات">Skills</h2>
-            </div>
+            <div class="text-center mb-4"><h2 class="section-title" data-en="Expertise" data-ar="الخبرات">Expertise</h2></div>
             <div class="row g-4">
                 <div class="col-md-6" data-aos="fade-right">
-                    <div class="skill-item">
-                        <div class="skill-header"><span>HTML / CSS</span><span>90%</span></div>
-                        <div class="progress"><div class="progress-bar" style="width: 90%;"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header"><span>JavaScript</span><span>75%</span></div>
-                        <div class="progress"><div class="progress-bar" style="width: 75%;"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header"><span>Python</span><span>70%</span></div>
-                        <div class="progress"><div class="progress-bar" style="width: 70%;"></div></div>
-                    </div>
+                    <div class="skill-item"><div class="skill-header"><span>Full-Stack Web Development</span><span>90%</span></div><div class="progress"><div class="progress-bar" style="width:90%"></div></div></div>
+                    <div class="skill-item"><div class="skill-header"><span>JavaScript</span><span>75%</span></div><div class="progress"><div class="progress-bar" style="width:75%"></div></div></div>
+                    <div class="skill-item"><div class="skill-header"><span>Python & Automation Scripts</span><span>70%</span></div><div class="progress"><div class="progress-bar" style="width:70%"></div></div></div>
                 </div>
                 <div class="col-md-6" data-aos="fade-left">
-                    <div class="skill-item">
-                        <div class="skill-header"><span>Zapier / Make</span><span>85%</span></div>
-                        <div class="progress"><div class="progress-bar" style="width: 85%;"></div></div>
+                    <div class="skill-item"><div class="skill-header"><span>Zapier / Make / n8n</span><span>85%</span></div><div class="progress"><div class="progress-bar" style="width:85%"></div></div></div>
+                    <div class="skill-item"><div class="skill-header"><span>Database Design (SQL / Airtable)</span><span>80%</span></div><div class="progress"><div class="progress-bar" style="width:80%"></div></div></div>
+                    <div class="skill-item"><div class="skill-header"><span>Git / GitHub / Cloud Pathways</span><span>75%</span></div><div class="progress"><div class="progress-bar" style="width:75%"></div></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Stack -->
+    <section id="stack" class="section-padding" data-aos="fade-up">
+        <div class="container">
+            <div class="text-center mb-4"><h2 class="section-title" data-en="Nexora Stack" data-ar="أدوات Nexora">Nexora Stack</h2></div>
+            <div class="row g-3">
+                <div class="col-6 col-md-3" data-aos="zoom-in"><div class="stack-item"><i class="bi bi-lightning-charge-fill stack-icon"></i><h6>Zapier</h6></div></div>
+                <div class="col-6 col-md-3" data-aos="zoom-in"><div class="stack-item"><i class="bi bi-diagram-3-fill stack-icon"></i><h6>Make</h6></div></div>
+                <div class="col-6 col-md-3" data-aos="zoom-in"><div class="stack-item"><i class="bi bi-table stack-icon"></i><h6>Airtable</h6></div></div>
+                <div class="col-6 col-md-3" data-aos="zoom-in"><div class="stack-item"><i class="bi bi-code-square stack-icon"></i><h6>VS Code</h6></div></div>
+                <div class="col-6 col-md-3" data-aos="zoom-in"><div class="stack-item"><i class="bi bi-git stack-icon"></i><h6>GitHub</h6></div></div>
+                <div class="col-6 col-md-3" data-aos="zoom-in"><div class="stack-item"><i class="bi bi-fire stack-icon"></i><h6>Firebase</h6></div></div>
+                <div class="col-6 col-md-3" data-aos="zoom-in"><div class="stack-item"><i class="bi bi-cloud-fill stack-icon"></i><h6>Cloud</h6></div></div>
+                <div class="col-6 col-md-3" data-aos="zoom-in"><div class="stack-item"><i class="bi bi-palette-fill stack-icon"></i><h6>Figma</h6></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Systems / Services -->
+    <section id="systems" class="section-padding" data-aos="fade-up">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 class="section-title" data-en="Systems & Services" data-ar="الأنظمة والخدمات">Systems & Services</h2>
+                <p class="text-muted" data-en="Solutions engineered by Nexora" data-ar="حلول هندسية من Nexora">Solutions engineered by Nexora</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="50">
+                    <div class="system-card">
+                        <i class="bi bi-gear-wide-connected sys-icon"></i>
+                        <h5 data-en="Process Automation" data-ar="أتمتة العمليات">Process Automation</h5>
+                        <p class="small" data-en="No-code and low-code automation pipelines connecting cloud apps." data-ar="مسارات أتمتة بدون كود أو بكود قليل تربط التطبيقات السحابية.">No-code and low-code automation pipelines connecting cloud apps.</p>
+                        <ul>
+                            <li data-en="Workflow orchestration" data-ar="تنسيق سير العمل">Workflow orchestration</li>
+                            <li data-en="API integrations" data-ar="تكاملات API">API integrations</li>
+                            <li data-en="Smart notifications" data-ar="إشعارات ذكية">Smart notifications</li>
+                        </ul>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-header"><span>Airtable / SQL</span><span>80%</span></div>
-                        <div class="progress"><div class="progress-bar" style="width: 80%;"></div></div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="system-card">
+                        <i class="bi bi-code-slash sys-icon"></i>
+                        <h5 data-en="Full-Stack Development" data-ar="تطوير متكامل">Full-Stack Development</h5>
+                        <p class="small" data-en="Responsive web apps and portals using modern front-end and back-end stacks." data-ar="تطبيقات وب وبوابات متجاوبة باستخدام تقنيات حديثة للواجهة والخلفية.">Responsive web apps and portals using modern front-end and back-end stacks.</p>
+                        <ul>
+                            <li data-en="HTML / CSS / JS" data-ar="HTML / CSS / JS">HTML / CSS / JS</li>
+                            <li data-en="Firebase & APIs" data-ar="Firebase وAPIs">Firebase & APIs</li>
+                            <li data-en="PWA-ready builds" data-ar="تطبيقات PWA جاهزة">PWA-ready builds</li>
+                        </ul>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-header"><span>Git / GitHub</span><span>75%</span></div>
-                        <div class="progress"><div class="progress-bar" style="width: 75%;"></div></div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+                    <div class="system-card">
+                        <i class="bi bi-database sys-icon"></i>
+                        <h5 data-en="Database Engineering" data-ar="هندسة قواعد البيانات">Database Engineering</h5>
+                        <p class="small" data-en="Schema design, normalization, and query optimization for reliable systems." data-ar="تصميم المخططات والتطبيع وتحسين الاستعلامات لأنظمة موثوقة.">Schema design, normalization, and query optimization for reliable systems.</p>
+                        <ul>
+                            <li data-en="MySQL / SQLite" data-ar="MySQL / SQLite">MySQL / SQLite</li>
+                            <li data-en="Airtable schemas" data-ar="مخططات Airtable">Airtable schemas</li>
+                            <li data-en="Reporting & analytics" data-ar="التقارير والتحليلات">Reporting & analytics</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="system-card">
+                        <i class="bi bi-cloud-arrow-up sys-icon"></i>
+                        <h5 data-en="Cloud Pathways" data-ar="مسارات الحوسبة السحابية">Cloud Pathways</h5>
+                        <p class="small" data-en="Guided setups for hosting, deployment, and scaling on the cloud." data-ar="إعدادات موجّهة للاستضافة والنشر والتوسع على السحابة.">Guided setups for hosting, deployment, and scaling on the cloud.</p>
+                        <ul>
+                            <li data-en="GitHub Pages & CI" data-ar="GitHub Pages وCI">GitHub Pages & CI</li>
+                            <li data-en="Firebase Hosting" data-ar="Firebase Hosting">Firebase Hosting</li>
+                            <li data-en="Domain & SSL setup" data-ar="إعداد الدومين وSSL">Domain & SSL setup</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -680,7 +674,7 @@
     <section id="portfolio" class="section-padding" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-4">
-                <h2 class="section-title" data-en="Featured Projects" data-ar="المشاريع المميزة">Featured Projects</h2>
+                <h2 class="section-title" data-en="Ecosystem & Projects" data-ar="المنظومة والمشاريع">Ecosystem & Projects</h2>
                 <div class="mt-3">
                     <button class="filter-btn active" data-filter="all" data-en="All" data-ar="الكل">All</button>
                     <button class="filter-btn" data-filter="automation" data-en="Automation" data-ar="أتمتة">Automation</button>
@@ -689,80 +683,10 @@
                 </div>
             </div>
             <div class="row g-4" id="project-container">
-                <div class="col-md-6 col-lg-4 project-item" data-category="automation" data-aos="fade-up" data-aos-delay="50">
-                    <div class="project-card">
-                        <div class="project-thumb"><img src="images/pic03.jpg" alt="Order Tracking" loading="lazy"></div>
-                        <div class="project-body">
-                            <h5 data-en="Order Tracking System" data-ar="نظام تتبع الطلبات">Order Tracking System</h5>
-                            <p class="text-muted small" data-en="Automated tracking using Airtable and Make." data-ar="أتمتة التتبع باستخدام Airtable و Make.">Automated tracking using Airtable and Make.</p>
-                            <div><span class="tech-tag">Airtable</span><span class="tech-tag">Make</span><span class="tech-tag">Zapier</span></div>
-                            <div class="project-links mt-3">
-                                <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal1" data-en="Details" data-ar="تفاصيل">Details</a>
-                                <a href="https://github.com/AliAloufi2050" class="btn btn-sm btn-primary">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 project-item" data-category="web" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-card">
-                        <div class="project-thumb"><img src="images/pic04.jpg" alt="University Portal" loading="lazy"></div>
-                        <div class="project-body">
-                            <h5 data-en="University Portal" data-ar="بوابة الجامعة">University Portal</h5>
-                            <p class="text-muted small" data-en="Responsive portal for students." data-ar="بوابة متجاوبة للطلاب.">Responsive portal for students.</p>
-                            <div><span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JS</span></div>
-                            <div class="project-links mt-3">
-                                <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal2" data-en="Details" data-ar="تفاصيل">Details</a>
-                                <a href="https://github.com/AliAloufi2050" class="btn btn-sm btn-primary">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 project-item" data-category="database" data-aos="fade-up" data-aos-delay="150">
-                    <div class="project-card">
-                        <div class="project-thumb"><img src="images/ali.jpg" alt="Inventory Management" loading="lazy"></div>
-                        <div class="project-body">
-                            <h5 data-en="Inventory Management" data-ar="إدارة المخزون">Inventory Management</h5>
-                            <p class="text-muted small" data-en="Database-driven tracking system." data-ar="نظام تتبع قائم على قاعدة البيانات.">Database-driven tracking system.</p>
-                            <div><span class="tech-tag">MySQL</span><span class="tech-tag">Python</span></div>
-                            <div class="project-links mt-3">
-                                <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal3" data-en="Details" data-ar="تفاصيل">Details</a>
-                                <a href="https://github.com/AliAloufi2050" class="btn btn-sm btn-primary">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- تُملأ ديناميكياً -->
             </div>
         </div>
     </section>
-
-    <!-- Modals -->
-    <div class="modal fade" id="projectModal1" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content glass">
-                <div class="modal-header"><h5 class="modal-title" data-en="Order Tracking System" data-ar="نظام تتبع الطلبات">Order Tracking System</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body"><p data-en="Full details of the automation project." data-ar="تفاصيل كاملة عن مشروع الأتمتة.">Full details of the automation project.</p></div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="projectModal2" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content glass">
-                <div class="modal-header"><h5 class="modal-title" data-en="University Portal" data-ar="بوابة الجامعة">University Portal</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body"><p data-en="Full details of the web portal project." data-ar="تفاصيل كاملة عن مشروع البوابة.">Full details of the web portal project.</p></div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="projectModal3" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content glass">
-                <div class="modal-header"><h5 class="modal-title" data-en="Inventory Management" data-ar="إدارة المخزون">Inventory Management</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body"><p data-en="Full details of the database project." data-ar="تفاصيل كاملة عن مشروع قاعدة البيانات.">Full details of the database project.</p></div>
-            </div>
-        </div>
-    </div>
 
     <!-- Stats -->
     <section id="stats" class="section-padding" data-aos="fade-up">
@@ -778,58 +702,15 @@
         </div>
     </section>
 
-    <!-- Services -->
-    <section id="services" class="section-padding" data-aos="fade-up">
-        <div class="container">
-            <div class="text-center mb-4"><h2 class="section-title" data-en="Services" data-ar="الخدمات">Services</h2></div>
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="50">
-                    <div class="service-card text-center p-4">
-                        <i class="bi bi-gear-wide-connected display-4 text-primary"></i>
-                        <h5 data-en="Automation" data-ar="أتمتة">Automation</h5>
-                        <p class="small" data-en="No-code workflow automation." data-ar="أتمتة سير العمل بدون كود.">No-code workflow automation.</p>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-card text-center p-4">
-                        <i class="bi bi-code-slash display-4 text-primary"></i>
-                        <h5 data-en="Web Dev" data-ar="تطوير ويب">Web Dev</h5>
-                        <p class="small" data-en="Modern responsive websites." data-ar="مواقع حديثة متجاوبة.">Modern responsive websites.</p>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
-                    <div class="service-card text-center p-4">
-                        <i class="bi bi-database display-4 text-primary"></i>
-                        <h5 data-en="Databases" data-ar="قواعد بيانات">Databases</h5>
-                        <p class="small" data-en="Efficient database design." data-ar="تصميم قواعد بيانات فعال.">Efficient database design.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Experience -->
     <section id="experience" class="section-padding" data-aos="fade-up">
         <div class="container">
-            <div class="text-center mb-4"><h2 class="section-title" data-en="Experience" data-ar="الخبرات">Experience</h2></div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="timeline">
-                        <div class="timeline-item" data-aos="fade-up">
-                            <h6 class="timeline-date">2024 - Now</h6>
-                            <h6 data-en="Freelance Automation Specialist" data-ar="أخصائي أتمتة مستقل">Freelance Automation Specialist</h6>
-                        </div>
-                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="50">
-                            <h6 class="timeline-date">2022 - 2024</h6>
-                            <h6 data-en="Information Systems Student" data-ar="طالب نظم معلومات">Information Systems Student</h6>
-                        </div>
-                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
-                            <h6 class="timeline-date">2021 - 2022</h6>
-                            <h6 data-en="Web Development Trainee" data-ar="متدرب تطوير ويب">Web Development Trainee</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="text-center mb-4"><h2 class="section-title" data-en="Journey" data-ar="المسيرة">Journey</h2></div>
+            <div class="row justify-content-center"><div class="col-lg-8"><div class="timeline">
+                <div class="timeline-item" data-aos="fade-up"><h6 class="timeline-date">2024 - Now</h6><h6 data-en="Founder & Systems Engineer — Nexora" data-ar="مؤسس ومهندس أنظمة — Nexora">Founder & Systems Engineer — Nexora</h6></div>
+                <div class="timeline-item" data-aos="fade-up"><h6 class="timeline-date">2022 - 2024</h6><h6 data-en="Information Systems Student" data-ar="طالب نظم معلومات">Information Systems Student</h6></div>
+                <div class="timeline-item" data-aos="fade-up"><h6 class="timeline-date">2021 - 2022</h6><h6 data-en="Web Development Trainee" data-ar="متدرب تطوير ويب">Web Development Trainee</h6></div>
+            </div></div></div>
         </div>
     </section>
 
@@ -837,29 +718,7 @@
     <section id="certifications" class="section-padding" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-4"><h2 class="section-title" data-en="Certifications" data-ar="الشهادات">Certifications</h2></div>
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="flip-left" data-aos-delay="50">
-                    <div class="cert-card text-center p-4">
-                        <i class="bi bi-award-fill display-4 text-primary"></i>
-                        <h6 data-en="Zapier Automation" data-ar="أتمتة Zapier">Zapier Automation</h6>
-                        <p class="small text-muted">Udemy - 2024</p>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
-                    <div class="cert-card text-center p-4">
-                        <i class="bi bi-award-fill display-4 text-primary"></i>
-                        <h6 data-en="Responsive Web Design" data-ar="تصميم الويب المتجاوب">Responsive Web Design</h6>
-                        <p class="small text-muted">freeCodeCamp - 2023</p>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="flip-left" data-aos-delay="150">
-                    <div class="cert-card text-center p-4">
-                        <i class="bi bi-award-fill display-4 text-primary"></i>
-                        <h6 data-en="Database Fundamentals" data-ar="أساسيات قواعد البيانات">Database Fundamentals</h6>
-                        <p class="small text-muted">Coursera - 2023</p>
-                    </div>
-                </div>
-            </div>
+            <div class="row g-4" id="cert-container"></div>
         </div>
     </section>
 
@@ -867,68 +726,27 @@
     <section id="testimonials" class="section-padding" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-4"><h2 class="section-title" data-en="Testimonials" data-ar="التوصيات">Testimonials</h2></div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="testimonial-card glass p-4 text-center">
-                                    <p class="testimonial-text small" data-en="“Ali is an exceptional automation specialist.”" data-ar="“علي متخصص أتمتة استثنائي.”">“Ali is an exceptional automation specialist.”</p>
-                                    <p class="testimonial-author small" data-en="- Mohammed, CEO" data-ar="- محمد، رئيس تنفيذي">- Mohammed, CEO</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="testimonial-card glass p-4 text-center">
-                                    <p class="testimonial-text small" data-en="“His web skills are top-notch.”" data-ar="“مهاراته في الويب ممتازة.”">“His web skills are top-notch.”</p>
-                                    <p class="testimonial-author small" data-en="- Sarah, PM" data-ar="- سارة، مديرة">- Sarah, PM</p>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </button>
+            <div class="row justify-content-center"><div class="col-lg-8">
+                <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active"><div class="testimonial-card glass p-4 text-center"><p class="testimonial-text small" data-en="“Nexora delivered an exceptional automation system.”" data-ar="“قدّمت Nexora نظام أتمتة استثنائي.”">“Nexora delivered an exceptional automation system.”</p><p class="testimonial-author small" data-en="- Mohammed, CEO" data-ar="- محمد، رئيس تنفيذي">- Mohammed, CEO</p></div></div>
+                        <div class="carousel-item"><div class="testimonial-card glass p-4 text-center"><p class="testimonial-text small" data-en="“Top-notch web development and clean code.”" data-ar="“تطوير ويب ممتاز وكود نظيف.”">“Top-notch web development and clean code.”</p><p class="testimonial-author small" data-en="- Sarah, PM" data-ar="- سارة، مديرة">- Sarah, PM</p></div></div>
                     </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
                 </div>
-            </div>
+            </div></div>
         </div>
     </section>
 
-    <!-- Blog -->
-    <section id="blog" class="section-padding" data-aos="fade-up">
+    <!-- Insights (was Blog) -->
+    <section id="insights" class="section-padding" data-aos="fade-up">
         <div class="container">
-            <div class="text-center mb-4"><h2 class="section-title" data-en="Blog" data-ar="المدونة">Blog</h2></div>
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="50">
-                    <div class="blog-card">
-                        <div class="blog-thumb"><img src="images/pic03.jpg" alt="Article" loading="lazy"></div>
-                        <div class="blog-body">
-                            <h6 data-en="Automation Guide" data-ar="دليل الأتمتة">Automation Guide</h6>
-                            <a href="#" class="btn btn-sm btn-outline-primary" data-en="Read" data-ar="اقرأ">Read</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="blog-card">
-                        <div class="blog-thumb"><img src="images/pic04.jpg" alt="Article" loading="lazy"></div>
-                        <div class="blog-body">
-                            <h6 data-en="Responsive Design" data-ar="التصميم المتجاوب">Responsive Design</h6>
-                            <a href="#" class="btn btn-sm btn-outline-primary" data-en="Read" data-ar="اقرأ">Read</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
-                    <div class="blog-card">
-                        <div class="blog-thumb"><img src="images/ali.jpg" alt="Article" loading="lazy"></div>
-                        <div class="blog-body">
-                            <h6 data-en="Database Tips" data-ar="نصائح قواعد البيانات">Database Tips</h6>
-                            <a href="#" class="btn btn-sm btn-outline-primary" data-en="Read" data-ar="اقرأ">Read</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="text-center mb-4">
+                <h2 class="section-title" data-en="Insights & Posts" data-ar="الرؤى والمنشورات">Insights & Posts</h2>
+                <p class="text-muted" data-en="Technical breakthroughs, guides and dev notes" data-ar="اختراقات تقنية وأدلة وملاحظات تطويرية">Technical breakthroughs, guides and dev notes</p>
             </div>
+            <div class="row g-4" id="blog-container"></div>
         </div>
     </section>
 
@@ -936,39 +754,20 @@
     <section id="faq" class="section-padding" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-4"><h2 class="section-title" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</h2></div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="accordion" id="faqAccordion">
-                        <div class="accordion-item glass mb-2">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
-                                    <span data-en="What services?" data-ar="ما الخدمات؟">What services?</span>
-                                </button>
-                            </h2>
-                            <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body small" data-en="Automation, web, databases." data-ar="أتمتة، ويب، قواعد بيانات.">Automation, web, databases.</div>
-                            </div>
-                        </div>
-                        <div class="accordion-item glass mb-2">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
-                                    <span data-en="Freelance?" data-ar="عمل حر؟">Freelance?</span>
-                                </button>
-                            </h2>
-                            <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body small" data-en="Yes, open." data-ar="نعم، متاح.">Yes, open.</div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row justify-content-center"><div class="col-lg-8">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item glass mb-2"><h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1"><span data-en="What does Nexora offer?" data-ar="ماذا تقدم Nexora؟">What does Nexora offer?</span></button></h2><div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion"><div class="accordion-body small" data-en="Nexora builds process automation, web development, database systems, and cloud deployments." data-ar="تقدّم Nexora أتمتة العمليات، تطوير الويب، أنظمة قواعد البيانات، والحلول السحابية.">Nexora builds process automation, web development, database systems, and cloud deployments.</div></div></div>
+                    <div class="accordion-item glass mb-2"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2"><span data-en="Are you available for freelance work?" data-ar="هل أنت متاح للعمل الحر؟">Are you available for freelance work?</span></button></h2><div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body small" data-en="Yes, Nexora accepts freelance projects and collaborations." data-ar="نعم، Nexora تقبل المشاريع المستقلة والتعاون.">Yes, Nexora accepts freelance projects and collaborations.</div></div></div>
+                    <div class="accordion-item glass mb-2"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3"><span data-en="What tools do you use?" data-ar="ما الأدوات التي تستخدمها؟">What tools do you use?</span></button></h2><div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body small" data-en="Zapier, Make, Airtable, Firebase, GitHub Pages, and custom scripts." data-ar="Zapier، Make، Airtable، Firebase، GitHub Pages، وسكربتات مخصصة.">Zapier, Make, Airtable, Firebase, GitHub Pages, and custom scripts.</div></div></div>
                 </div>
-            </div>
+            </div></div>
         </div>
     </section>
 
     <!-- Contact -->
     <section id="contact" class="section-padding" data-aos="fade-up">
         <div class="container">
-            <div class="text-center mb-4"><h2 class="section-title" data-en="Contact" data-ar="تواصل">Contact</h2></div>
+            <div class="text-center mb-4"><h2 class="section-title" data-en="Contact Nexora" data-ar="تواصل مع Nexora">Contact Nexora</h2></div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
@@ -979,6 +778,24 @@
                             <div class="col-12 text-center"><button type="submit" class="btn btn-primary px-4" data-en="Send" data-ar="إرسال">Send</button></div>
                         </div>
                     </form>
+                    <div class="text-center mt-4 share-buttons">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_URL" target="_blank" class="share-facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="https://twitter.com/intent/tweet?url=YOUR_URL" target="_blank" class="share-twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=YOUR_URL" target="_blank" class="share-linkedin"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://wa.me/?text=YOUR_URL" target="_blank" class="share-whatsapp"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-4 mt-lg-0">
+                    <div class="glass p-4 rounded-4">
+                        <h5 data-en="Contact Info" data-ar="معلومات التواصل">Contact Info</h5>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><i class="bi bi-envelope-fill me-2 text-primary"></i> <a href="mailto:your.email@example.com">your.email@example.com</a></li>
+                            <li class="mb-2"><i class="bi bi-telephone-fill me-2 text-primary"></i> <a href="tel:+966500000000">+966 50 000 0000</a></li>
+                            <li class="mb-2"><i class="bi bi-geo-alt-fill me-2 text-primary"></i> <span data-en="Saudi Arabia" data-ar="المملكة العربية السعودية">Saudi Arabia</span></li>
+                        </ul>
+                        <div class="mt-4"><iframe src="https://www.openstreetmap.org/export/embed.html?bbox=46.7166%2C24.6877%2C46.7566%2C24.7077&layer=mapnik" width="100%" height="200" style="border:0;border-radius:10px;" loading="lazy"></iframe></div>
+                        <div class="mt-3 text-center small text-muted"><span data-en="Visitors:" data-ar="الزوار:">Visitors:</span> <span id="visitorCount">0</span></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -987,15 +804,18 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="mb-2 social-icons">
-                <a href="https://www.instagram.com/ali.aloufi.5682?stkn=MXRlY2RhdWxzNWR4Nw%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                <a href="https://t.me/AliAloufi5682" target="_blank" rel="noopener" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
-                <a href="https://www.tiktok.com/@ali.aloufi.5682?_r=1&_t=ZS-99X3GBetAGN" target="_blank" rel="noopener" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
-                <a href="https://www.facebook.com/share/18sa8Fmtjm/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                <a href="https://discord.gg/tbvufahq" target="_blank" rel="noopener" aria-label="Discord"><i class="bi bi-discord"></i></a>
-                <a href="https://github.com/AliAloufi2050" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
+            <div class="mb-2 social-icons" id="footerSocial">
+                <a href="https://www.instagram.com/ali.aloufi.5682?stkn=MXRlY2RhdWxzNWR4Nw%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://t.me/AliAloufi5682" target="_blank" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+                <a href="https://www.tiktok.com/@ali.aloufi.5682?_r=1&_t=ZS-99X3GBetAGN" target="_blank" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                <a href="https://www.facebook.com/share/18sa8Fmtjm/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://discord.gg/tbvufahq" target="_blank" aria-label="Discord"><i class="bi bi-discord"></i></a>
+                <a href="https://github.com/AliAloufi2050" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
             </div>
-            <p class="small mb-0">&copy; <span data-en="Ali Aloufi" data-ar="علي العوفي">Ali Aloufi</span></p>
+            <p class="small mb-0 nexora-brand" style="font-size:0.85rem;">
+                © <span id="footerName" data-en="Nexora Systems" data-ar="أنظمة Nexora">Nexora Systems</span>
+            </p>
+            <p class="small text-muted mb-0 mt-1" data-en="Founded by Ali Aloufi" data-ar="بتأسيس علي العوفي">Founded by Ali Aloufi</p>
         </div>
     </footer>
 
@@ -1004,87 +824,417 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <script>
-        // Language Switcher
-        (function() {
-            let currentLang = localStorage.getItem('lang') || 'en';
-            function applyLanguage(lang, updateStorage = true) {
-                const htmlTag = document.getElementById('html-root');
-                const langBtns = document.querySelectorAll('#langToggle span');
-                const titleTag = document.getElementById('page-title');
-                if (lang === 'ar') {
-                    htmlTag.setAttribute('dir', 'rtl');
-                    htmlTag.setAttribute('lang', 'ar');
-                    titleTag.textContent = 'علي العوفي | معرض الأعمال';
-                    langBtns.forEach(s => s.textContent = s.getAttribute('data-lang-ar') || 'English');
-                } else {
-                    htmlTag.setAttribute('dir', 'ltr');
-                    htmlTag.setAttribute('lang', 'en');
-                    titleTag.textContent = 'Ali Aloufi | Portfolio';
-                    langBtns.forEach(s => s.textContent = s.getAttribute('data-lang-en') || 'العربية');
-                }
-                document.querySelectorAll('[data-en]').forEach(el => {
-                    const text = el.getAttribute(`data-${lang}`);
-                    if (text) el.textContent = text;
-                });
-                document.querySelectorAll('[data-en-placeholder]').forEach(el => {
-                    const placeholder = el.getAttribute(`data-${lang}-placeholder`);
-                    if (placeholder) el.placeholder = placeholder;
-                });
-                if (updateStorage) localStorage.setItem('lang', lang);
-                currentLang = lang;
-                initTyped();
-                updateGreeting();
-            }
-            applyLanguage(currentLang, false);
-            document.getElementById('langToggle').addEventListener('click', () => applyLanguage(currentLang === 'en' ? 'ar' : 'en'));
+        // ====== الإعدادات الأساسية ======
+        const ADMIN_CREDENTIALS = { username: 'admin', password: 'admin123' };
+        let currentLang = localStorage.getItem('lang') || (navigator.language.startsWith('ar') ? 'ar' : 'en');
+        let adminData = JSON.parse(localStorage.getItem('adminData')) || {};
+        let projects = JSON.parse(localStorage.getItem('projects')) || [
+            { title: 'Jisr Digital Platform', description: 'Integrated digital bridge system for organizational workflows.', image: 'images/pic03.jpg', tech: 'HTML,JS,Firebase', category: 'web' },
+            { title: 'Order Tracking Automation', description: 'Automated tracking using Airtable and Make.', image: 'images/pic04.jpg', tech: 'Airtable,Make,Zapier', category: 'automation' },
+            { title: 'Inventory Management', description: 'Database-driven tracking system.', image: 'images/avatar.png', tech: 'MySQL,Python', category: 'database' }
+        ];
+        let certificates = JSON.parse(localStorage.getItem('certificates')) || [
+            { title: 'Zapier Automation', issuer: 'Udemy', year: '2024' },
+            { title: 'Responsive Web Design', issuer: 'freeCodeCamp', year: '2023' },
+            { title: 'Database Fundamentals', issuer: 'Coursera', year: '2023' }
+        ];
+        let blogPosts = JSON.parse(localStorage.getItem('blogPosts')) || [
+            { title: 'Getting Started with Process Automation', image: 'images/pic03.jpg' },
+            { title: 'Building Responsive Web Portals', image: 'images/pic04.jpg' },
+            { title: 'Database Design Best Practices', image: 'images/avatar.png' }
+        ];
 
-            function initTyped() {
-                const el = document.getElementById('typed-text');
-                if (!el) return;
-                if (window.typedInstance) window.typedInstance.destroy();
-                window.typedInstance = new Typed('#typed-text', {
-                    strings: [el.getAttribute('data-en'), el.getAttribute('data-ar')],
-                    typeSpeed: 60,
-                    backSpeed: 40,
-                    backDelay: 2000,
-                    loop: true
-                });
+        // ====== اللغة ======
+        function applyLanguage(lang) {
+            const htmlTag = document.getElementById('html-root');
+            const langBtn = document.getElementById('langToggle').querySelector('span');
+            const title = document.getElementById('page-title');
+            if (lang === 'ar') {
+                htmlTag.setAttribute('dir', 'rtl');
+                htmlTag.setAttribute('lang', 'ar');
+                title.textContent = 'Nexora | أنظمة، أتمتة وحلول رقمية';
+                langBtn.textContent = 'English';
+            } else {
+                htmlTag.setAttribute('dir', 'ltr');
+                htmlTag.setAttribute('lang', 'en');
+                title.textContent = 'Nexora | Systems, Automation & Digital Solutions';
+                langBtn.textContent = 'العربية';
             }
-            function updateGreeting() {
-                const greet = document.getElementById('greeting');
-                if (greet) {
-                    const hour = new Date().getHours();
-                    if (hour < 12) greet.textContent = currentLang === 'ar' ? 'صباح الخير! أبني مسارات عمل ذكية.' : 'Good morning! I build smart workflows.';
-                    else if (hour < 18) greet.textContent = currentLang === 'ar' ? 'مساء الخير! أتمتة وحلول رقمية.' : 'Good afternoon! Automation and digital solutions.';
-                    else greet.textContent = currentLang === 'ar' ? 'مساء الليل! استمتع بتصفح مشاريعي.' : 'Good evening! Enjoy browsing my projects.';
-                }
-            }
-            updateGreeting();
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) el.textContent = text;
+            });
+            document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+                const placeholder = el.getAttribute(`data-${lang}-placeholder`);
+                if (placeholder) el.placeholder = placeholder;
+            });
+            localStorage.setItem('lang', lang);
+            currentLang = lang;
             initTyped();
+            updateGreeting();
+        }
+        document.getElementById('langToggle').addEventListener('click', () => applyLanguage(currentLang === 'en' ? 'ar' : 'en'));
+
+        function initTyped() {
+            const el = document.getElementById('typed-text');
+            if (!el) return;
+            if (window.typedInstance) window.typedInstance.destroy();
+            const en = el.getAttribute('data-en') || 'Systems, Automation & Digital Solutions';
+            const ar = el.getAttribute('data-ar') || 'أنظمة، أتمتة وحلول رقمية';
+            window.typedInstance = new Typed('#typed-text', {
+                strings: [en, ar],
+                typeSpeed: 60, backSpeed: 40, backDelay: 2000, loop: true
+            });
+        }
+
+        function updateGreeting() {
+            const greet = document.getElementById('greeting');
+            if (!greet) return;
+            const hour = new Date().getHours();
+            if (hour < 12) greet.textContent = currentLang === 'ar' ? 'صباح الخير! أبني مسارات عمل ذكية.' : 'Good morning! Building smart workflows.';
+            else if (hour < 18) greet.textContent = currentLang === 'ar' ? 'مساء الخير! أنظمة وأتمتة وحلول رقمية.' : 'Good afternoon! Systems, automation & digital solutions.';
+            else greet.textContent = currentLang === 'ar' ? 'مساء الليل! استمتع باستكشاف منظومة Nexora.' : 'Good evening! Explore the Nexora ecosystem.';
+        }
+
+        // ====== تحميل بيانات الأدمن ======
+        function loadAdminData() {
+            if (adminData.name) {
+                document.querySelector('.navbar-brand span .nexora-brand-accent').textContent = adminData.name;
+                document.getElementById('heroName').innerHTML = `<span class="nexora-brand-accent">${adminData.name}</span>`;
+                document.getElementById('quickName').textContent = adminData.name;
+                document.getElementById('footerName').textContent = adminData.name + ' Systems';
+            }
+            if (adminData.title) {
+                document.getElementById('typed-text').setAttribute('data-en', adminData.title);
+                document.getElementById('typed-text').setAttribute('data-ar', adminData.title);
+            }
+            if (adminData.heroImage) document.getElementById('heroImage').src = adminData.heroImage;
+            if (adminData.about1) {
+                document.getElementById('aboutText1').setAttribute('data-en', adminData.about1);
+                document.getElementById('aboutText1').setAttribute('data-ar', adminData.about1);
+                document.getElementById('aboutText1').textContent = adminData.about1;
+            }
+            if (adminData.about2) {
+                document.getElementById('aboutText2').setAttribute('data-en', adminData.about2);
+                document.getElementById('aboutText2').setAttribute('data-ar', adminData.about2);
+                document.getElementById('aboutText2').textContent = adminData.about2;
+            }
+            if (adminData.social) renderSocialLinks(adminData.social);
+            initTyped();
+        }
+
+        function renderSocialLinks(social) {
+            const container = document.getElementById('footerSocial');
+            container.innerHTML = '';
+            const links = [
+                { key: 'instagram', icon: 'bi-instagram' },
+                { key: 'telegram', icon: 'bi-telegram' },
+                { key: 'tiktok', icon: 'bi-tiktok' },
+                { key: 'facebook', icon: 'bi-facebook' },
+                { key: 'discord', icon: 'bi-discord' },
+                { key: 'github', icon: 'bi-github' }
+            ];
+            links.forEach(({ key, icon }) => {
+                if (social[key]) {
+                    const a = document.createElement('a');
+                    a.href = social[key];
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                    a.setAttribute('aria-label', key);
+                    a.innerHTML = `<i class="bi ${icon}"></i>`;
+                    container.appendChild(a);
+                }
+            });
+        }
+
+        // ====== عرض المشاريع ======
+        function renderProjects() {
+            const container = document.getElementById('project-container');
+            container.innerHTML = '';
+            if (!projects.length) {
+                container.innerHTML = '<div class="col-12 text-center text-muted">No projects yet</div>';
+                return;
+            }
+            projects.forEach((project, index) => {
+                const col = document.createElement('div');
+                col.className = 'col-md-6 col-lg-4 project-item';
+                col.setAttribute('data-category', project.category || 'all');
+                col.innerHTML = `
+                    <div class="project-card">
+                        <div class="project-thumb"><img src="${project.image || 'images/pic03.jpg'}" alt="${project.title}" loading="lazy"></div>
+                        <div class="project-body">
+                            <h5>${project.title}</h5>
+                            <p class="text-muted small">${project.description || ''}</p>
+                            <div>${(project.tech || '').split(',').map(t => `<span class="tech-tag">${t.trim()}</span>`).join('')}</div>
+                            <div class="project-links mt-3">
+                                <a href="#contact" class="btn btn-sm btn-outline-primary">Details</a>
+                                <a href="https://github.com/AliAloufi2050" target="_blank" class="btn btn-sm btn-primary">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(col);
+            });
+        }
+
+        function renderCertificates() {
+            const container = document.getElementById('cert-container');
+            container.innerHTML = '';
+            if (!certificates.length) {
+                container.innerHTML = '<div class="col-12 text-center text-muted">No certificates yet</div>';
+                return;
+            }
+            certificates.forEach(cert => {
+                const col = document.createElement('div');
+                col.className = 'col-md-4';
+                col.innerHTML = `
+                    <div class="cert-card text-center p-4">
+                        <i class="bi bi-award-fill display-4 text-primary"></i>
+                        <h6>${cert.title}</h6>
+                        <p class="small text-muted">${cert.issuer} - ${cert.year}</p>
+                    </div>
+                `;
+                container.appendChild(col);
+            });
+        }
+
+        function renderBlog() {
+            const container = document.getElementById('blog-container');
+            container.innerHTML = '';
+            if (!blogPosts.length) {
+                container.innerHTML = '<div class="col-12 text-center text-muted">No insights yet</div>';
+                return;
+            }
+            blogPosts.forEach(post => {
+                const col = document.createElement('div');
+                col.className = 'col-md-4';
+                col.innerHTML = `
+                    <div class="blog-card">
+                        <div class="blog-thumb"><img src="${post.image || 'images/pic03.jpg'}" alt="${post.title}" loading="lazy"></div>
+                        <div class="blog-body">
+                            <h6>${post.title}</h6>
+                            <a href="#" class="btn btn-sm btn-outline-primary" data-en="Read" data-ar="اقرأ">Read</a>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(col);
+            });
+        }
+
+        // ====== لوحة الأدمن ======
+        let adminPanel = document.getElementById('adminPanel');
+        let loginModal = new bootstrap.Modal(document.getElementById('adminLoginModal'));
+        let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+        document.getElementById('adminToggle').addEventListener('click', () => {
+            if (isLoggedIn) {
+                adminPanel.classList.add('open');
+                document.getElementById('customizerPanel').classList.remove('open');
+                fillAdminFields();
+            } else {
+                loginModal.show();
+            }
+        });
+        document.getElementById('adminClose').addEventListener('click', () => adminPanel.classList.remove('open'));
+
+        document.getElementById('loginSubmit').addEventListener('click', () => {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+                isLoggedIn = true;
+                localStorage.setItem('isLoggedIn', 'true');
+                loginModal.hide();
+                adminPanel.classList.add('open');
+                fillAdminFields();
+            } else {
+                document.getElementById('loginError').classList.remove('d-none');
+            }
+        });
+
+        function fillAdminFields() {
+            document.getElementById('adminName').value = adminData.name || 'Nexora';
+            document.getElementById('adminTitle').value = adminData.title || 'Systems, Automation & Digital Solutions';
+            document.getElementById('adminHeroImage').value = adminData.heroImage || 'images/avatar.png';
+            document.getElementById('adminAbout1').value = adminData.about1 || '';
+            document.getElementById('adminAbout2').value = adminData.about2 || '';
+            document.getElementById('adminInsta').value = adminData.social?.instagram || '';
+            document.getElementById('adminTelegram').value = adminData.social?.telegram || '';
+            document.getElementById('adminTiktok').value = adminData.social?.tiktok || '';
+            document.getElementById('adminFacebook').value = adminData.social?.facebook || '';
+            document.getElementById('adminDiscord').value = adminData.social?.discord || '';
+            document.getElementById('adminGithub').value = adminData.social?.github || '';
+            document.getElementById('adminUsername').value = ADMIN_CREDENTIALS.username;
+            document.getElementById('adminPassword').value = ADMIN_CREDENTIALS.password;
+            renderProjectList();
+            renderCertList();
+            renderBlogList();
+        }
+
+        function renderProjectList() {
+            const list = document.getElementById('projectList');
+            list.innerHTML = '';
+            projects.forEach((p, i) => {
+                const div = document.createElement('div');
+                div.className = 'd-flex justify-content-between align-items-center mb-1';
+                div.innerHTML = `<span>${p.title}</span> <button class="btn btn-sm btn-outline-danger" onclick="deleteProject(${i})"><i class="bi bi-trash"></i></button>`;
+                list.appendChild(div);
+            });
+        }
+        function renderCertList() {
+            const list = document.getElementById('certList');
+            list.innerHTML = '';
+            certificates.forEach((c, i) => {
+                const div = document.createElement('div');
+                div.className = 'd-flex justify-content-between align-items-center mb-1';
+                div.innerHTML = `<span>${c.title}</span> <button class="btn btn-sm btn-outline-danger" onclick="deleteCert(${i})"><i class="bi bi-trash"></i></button>`;
+                list.appendChild(div);
+            });
+        }
+        function renderBlogList() {
+            const list = document.getElementById('blogList');
+            list.innerHTML = '';
+            blogPosts.forEach((b, i) => {
+                const div = document.createElement('div');
+                div.className = 'd-flex justify-content-between align-items-center mb-1';
+                div.innerHTML = `<span>${b.title}</span> <button class="btn btn-sm btn-outline-danger" onclick="deleteBlog(${i})"><i class="bi bi-trash"></i></button>`;
+                list.appendChild(div);
+            });
+        }
+
+        window.deleteProject = function(index) {
+            projects.splice(index, 1);
+            localStorage.setItem('projects', JSON.stringify(projects));
+            renderProjects(); renderProjectList();
+        };
+        window.deleteCert = function(index) {
+            certificates.splice(index, 1);
+            localStorage.setItem('certificates', JSON.stringify(certificates));
+            renderCertificates(); renderCertList();
+        };
+        window.deleteBlog = function(index) {
+            blogPosts.splice(index, 1);
+            localStorage.setItem('blogPosts', JSON.stringify(blogPosts));
+            renderBlog(); renderBlogList();
+        };
+
+        document.getElementById('addProject').addEventListener('click', () => {
+            const title = document.getElementById('pTitle').value;
+            const desc = document.getElementById('pDesc').value;
+            const image = document.getElementById('pImage').value || 'images/pic03.jpg';
+            const tech = document.getElementById('pTech').value;
+            const category = document.getElementById('pCategory').value;
+            if (!title) return alert('Title required');
+            projects.push({ title, description: desc, image, tech, category });
+            localStorage.setItem('projects', JSON.stringify(projects));
+            renderProjects(); renderProjectList();
+            document.getElementById('pTitle').value = ''; document.getElementById('pDesc').value = ''; document.getElementById('pImage').value = ''; document.getElementById('pTech').value = '';
+        });
+
+        document.getElementById('addCert').addEventListener('click', () => {
+            const title = document.getElementById('cTitle').value;
+            const issuer = document.getElementById('cIssuer').value;
+            const year = document.getElementById('cYear').value;
+            if (!title) return alert('Title required');
+            certificates.push({ title, issuer, year });
+            localStorage.setItem('certificates', JSON.stringify(certificates));
+            renderCertificates(); renderCertList();
+            document.getElementById('cTitle').value = ''; document.getElementById('cIssuer').value = ''; document.getElementById('cYear').value = '';
+        });
+
+        document.getElementById('addBlog').addEventListener('click', () => {
+            const title = document.getElementById('bTitle').value;
+            const image = document.getElementById('bImage').value || 'images/pic03.jpg';
+            if (!title) return alert('Title required');
+            blogPosts.push({ title, image });
+            localStorage.setItem('blogPosts', JSON.stringify(blogPosts));
+            renderBlog(); renderBlogList();
+            document.getElementById('bTitle').value = ''; document.getElementById('bImage').value = '';
+        });
+
+        document.getElementById('adminSaveAll').addEventListener('click', () => {
+            adminData = {
+                name: document.getElementById('adminName').value,
+                title: document.getElementById('adminTitle').value,
+                heroImage: document.getElementById('adminHeroImage').value,
+                about1: document.getElementById('adminAbout1').value,
+                about2: document.getElementById('adminAbout2').value,
+                social: {
+                    instagram: document.getElementById('adminInsta').value,
+                    telegram: document.getElementById('adminTelegram').value,
+                    tiktok: document.getElementById('adminTiktok').value,
+                    facebook: document.getElementById('adminFacebook').value,
+                    discord: document.getElementById('adminDiscord').value,
+                    github: document.getElementById('adminGithub').value
+                }
+            };
+            localStorage.setItem('adminData', JSON.stringify(adminData));
+            ADMIN_CREDENTIALS.username = document.getElementById('adminUsername').value || 'admin';
+            ADMIN_CREDENTIALS.password = document.getElementById('adminPassword').value || 'admin123';
+            loadAdminData();
+            renderProjects(); renderCertificates(); renderBlog();
+            adminPanel.classList.remove('open');
+        });
+
+        document.getElementById('adminReset').addEventListener('click', () => {
+            localStorage.removeItem('adminData');
+            localStorage.removeItem('projects');
+            localStorage.removeItem('certificates');
+            localStorage.removeItem('blogPosts');
+            location.reload();
+        });
+
+        // ====== تخصيص المستخدم ======
+        (function() {
+            const panel = document.getElementById('customizerPanel');
+            const openBtn = document.getElementById('customizerToggle');
+            const closeBtn = document.getElementById('customizerClose');
+            const primaryPicker = document.getElementById('primaryColorPicker');
+            const accentPicker = document.getElementById('accentColorPicker');
+            const fontSizeSelect = document.getElementById('fontSizeSelect');
+            const bgEffectSelect = document.getElementById('bgEffectSelect');
+
+            openBtn.addEventListener('click', () => { panel.classList.add('open'); adminPanel.classList.remove('open'); });
+            closeBtn.addEventListener('click', () => panel.classList.remove('open'));
+
+            function applyUserColors() {
+                document.documentElement.style.setProperty('--primary-color', primaryPicker.value);
+                document.documentElement.style.setProperty('--secondary-color', primaryPicker.value);
+                document.documentElement.style.setProperty('--accent-color', accentPicker.value);
+            }
+            function applyFontSize() { document.documentElement.style.fontSize = fontSizeSelect.value; }
+            function applyBgEffect() {
+                const effect = bgEffectSelect.value;
+                const aurora = document.querySelector('.aurora-bg');
+                const particles = document.getElementById('particles-js');
+                if (effect === 'aurora') { aurora.style.display = 'block'; particles.style.display = 'block'; }
+                else if (effect === 'plain') { aurora.style.display = 'none'; particles.style.display = 'none'; }
+                else { aurora.style.display = 'none'; particles.style.display = 'block'; }
+            }
+
+            primaryPicker.addEventListener('input', applyUserColors);
+            accentPicker.addEventListener('input', applyUserColors);
+            fontSizeSelect.addEventListener('change', applyFontSize);
+            bgEffectSelect.addEventListener('change', applyBgEffect);
         })();
 
-        // Dark Mode
+        // ====== أخرى ======
         (function() {
-            const btn = document.getElementById('themeToggle');
+            const themeBtn = document.getElementById('themeToggle');
             const html = document.getElementById('html-root');
             html.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
-            btn.addEventListener('click', () => {
+            themeBtn.addEventListener('click', () => {
                 const t = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
                 html.setAttribute('data-theme', t);
                 localStorage.setItem('theme', t);
             });
         })();
 
-        // Contrast Toggle
         document.getElementById('contrastToggle').addEventListener('click', function() {
             const h = document.getElementById('html-root');
             h.setAttribute('data-contrast', h.getAttribute('data-contrast') === 'high' ? '' : 'high');
         });
-
-        // Reading Mode
         document.getElementById('readingToggle').addEventListener('click', () => document.body.classList.toggle('reading-mode'));
 
-        // Scroll Progress + Back to Top + Navbar Shadow
         (function() {
             const progress = document.getElementById('scrollProgress');
             const backBtn = document.getElementById('backToTop');
@@ -1099,7 +1249,6 @@
             backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
         })();
 
-        // Custom Cursor
         (function() {
             const cursor = document.getElementById('customCursor');
             if (!cursor || window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
@@ -1114,17 +1263,23 @@
             });
         })();
 
-        // AOS
+        (function() {
+            const img = document.getElementById('parallaxImage');
+            if (!img) return;
+            window.addEventListener('scroll', () => {
+                const rect = img.getBoundingClientRect();
+                img.style.transform = `translateY(${(rect.top - window.innerHeight / 2) * 0.1}px)`;
+            });
+        })();
+
         AOS.init({ duration: 700, once: true, offset: 80 });
 
-        // Particles
         tsParticles.load("particles-js", {
             fpsLimit: 60,
             particles: { number: { value: 60, density: { enable: true, area: 800 } }, color: { value: "#2563eb" }, shape: { type: "circle" }, opacity: { value: 0.4, random: true }, size: { value: 2.5, random: true }, move: { enable: true, speed: 1, direction: "none", random: true } },
             interactivity: { events: { onHover: { enable: true, mode: "repulse" } } }
         });
 
-        // Counter
         document.addEventListener('DOMContentLoaded', () => {
             const counters = document.querySelectorAll('.counter');
             const obs = new IntersectionObserver((entries) => {
@@ -1141,7 +1296,6 @@
             counters.forEach(c => obs.observe(c));
         });
 
-        // Project Filter
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -1157,17 +1311,30 @@
                 });
             });
         });
+
+        // تهيئة أولية
+        applyLanguage(currentLang);
+        loadAdminData();
+        renderProjects();
+        renderCertificates();
+        renderBlog();
     </script>
 
     <!-- JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Ali Aloufi",
+      "@type": "Organization",
+      "name": "Nexora Systems",
+      "alternateName": "Nexora Digital",
       "url": "https://yourdomain.com",
-      "image": "images/ali.jpg",
-      "jobTitle": "Information Systems Student",
+      "logo": "images/avatar.png",
+      "founder": {
+        "@type": "Person",
+        "name": "Ali Aloufi",
+        "jobTitle": "Information Systems Undergraduate",
+        "alumniOf": "King Faisal University"
+      },
       "sameAs": [
         "https://www.instagram.com/ali.aloufi.5682",
         "https://t.me/AliAloufi5682",
